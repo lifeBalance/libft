@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/29 16:25:01 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/10/29 16:35:31 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,14 @@ FLAGS	=	-Wall -Werror -Wextra
 SRCS	=	ft_putchar.c	\
 			ft_putstr.c		\
 			ft_strlen.c		\
-			ft_strcmp.c
+			ft_strcmp.c		\
+			ft_strncmp.c
 
 OBJS	=	ft_putchar.o	\
 			ft_putstr.o		\
 			ft_strlen.o		\
-			ft_strcmp.o
+			ft_strcmp.o		\
+			ft_strncmp.o
 
 HDRS	=	libft.h
 
