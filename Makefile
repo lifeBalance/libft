@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/29 19:12:22 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/10/29 19:21:04 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	=	ft_putchar.c	\
 			ft_strlen.c		\
 			ft_strcmp.c		\
 			ft_strncmp.c	\
+			ft_atoi.c		\
 			ft_strcpy.c		\
 			ft_isalpha.c	\
 			ft_isdigit.c	\
@@ -34,6 +35,7 @@ OBJS	=	ft_putchar.o	\
 			ft_strlen.o		\
 			ft_strcmp.o		\
 			ft_strncmp.o	\
+			ft_atoi.o		\
 			ft_strcpy.o		\
 			ft_isalpha.o	\
 			ft_isdigit.o	\
