@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/29 16:39:12 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/10/29 16:46:46 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,16 @@ SRCS	=	ft_putchar.c	\
 			ft_strlen.c		\
 			ft_strcmp.c		\
 			ft_strncmp.c	\
-			ft_strcpy.c
+			ft_strcpy.c		\
+			ft_isalpha.c
 
 OBJS	=	ft_putchar.o	\
 			ft_putstr.o		\
 			ft_strlen.o		\
 			ft_strcmp.o		\
 			ft_strncmp.o	\
-			ft_strcpy.o
+			ft_strcpy.o		\
+			ft_isalpha.o
 
 HDRS	=	libft.h
 
