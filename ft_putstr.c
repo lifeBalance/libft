@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/29 15:54:06 by rodrodri         ###   ########.fr       */
+/*   Created: 2021/10/27 00:38:52 by rodrodri          #+#    #+#             */
+/*   Updated: 2021/10/29 11:21:05 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-void	ft_putchar(char ch);
-void	ft_putstr(char *str);
-
-#endif
+void	ft_putstr(char *str)
+{
+	while (*str)
+		ft_putchar(*str++);
+}

@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/29 15:21:30 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/10/29 15:54:44 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,11 @@ NAME	=	libft.a
 
 FLAGS	=	-Wall -Werror -Wextra
 
-SRCS	=	ft_putchar.c
+SRCS	=	ft_putchar.c	\
+			ft_putstr.c
 
-OBJS	=	ft_putchar.o
+OBJS	=	ft_putchar.o	\
+			ft_putstr.o
 
 HDRS	=	libft.h
 
