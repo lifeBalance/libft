@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 11:14:13 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/30 11:19:52 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/10/30 11:37:19 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	ft_bzero(void *s, size_t n)
 	str = (char *)s;
 	while (n)
 	{
-		*str = 0;
-		str++;
+		*str++ = 0;
 		n--;
 	}
 }
