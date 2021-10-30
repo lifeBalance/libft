@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/29 22:23:33 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/10/30 11:17:49 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 
 void	*ft_memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t n);
 void	ft_putchar(char ch);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);

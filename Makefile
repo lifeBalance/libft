@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/29 22:21:33 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/10/30 11:14:43 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME	=	libft.a
 FLAGS	=	-Wall -Werror -Wextra
 
 SRCS	=	ft_memset.c		\
+			ft_bzero.c		\
 			ft_putchar.c	\
 			ft_putstr.c		\
 			ft_strlen.c		\
@@ -32,6 +33,7 @@ SRCS	=	ft_memset.c		\
 			ft_tolower.c
 
 OBJS	=	ft_memset.o		\
+			ft_bzero.o		\
 			ft_putchar.o	\
 			ft_putstr.o		\
 			ft_strlen.o		\
