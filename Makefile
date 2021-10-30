@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/30 12:33:06 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/10/30 13:26:01 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FLAGS	=	-Wall -Werror -Wextra
 SRCS	=	ft_memset.c		\
 			ft_bzero.c		\
 			ft_memcpy.c		\
+			ft_memccpy.c	\
 			ft_putchar.c	\
 			ft_putstr.c		\
 			ft_strlen.c		\
@@ -36,6 +37,7 @@ SRCS	=	ft_memset.c		\
 OBJS	=	ft_memset.o		\
 			ft_bzero.o		\
 			ft_memcpy.o		\
+			ft_memccpy.o	\
 			ft_putchar.o	\
 			ft_putstr.o		\
 			ft_strlen.o		\

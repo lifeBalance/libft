@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/30 12:33:21 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/10/30 13:41:54 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	ft_putchar(char ch);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
