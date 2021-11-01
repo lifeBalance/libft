@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/01 13:17:30 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/01 23:27:23 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s1);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
+char	*ft_strcat(char *s1, const char *s2);
 
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
