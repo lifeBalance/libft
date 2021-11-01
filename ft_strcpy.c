@@ -6,11 +6,11 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:26:52 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/29 16:47:18 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/01 11:56:34 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
