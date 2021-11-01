@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/10/31 21:51:41 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/01 11:42:14 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,8 @@ SRCS	=	ft_memset.c		\
 			ft_memmove.c	\
 			ft_memchr.c		\
 			ft_memcmp.c		\
-			ft_putchar.c	\
-			ft_putstr.c		\
 			ft_strlen.c		\
+			ft_strdup.c		\
 			ft_strcmp.c		\
 			ft_strncmp.c	\
 			ft_atoi.c		\
@@ -36,7 +35,9 @@ SRCS	=	ft_memset.c		\
 			ft_isprint.c	\
 			ft_toupper.c	\
 			ft_tolower.c	\
-			ft_strequ.c
+			ft_strequ.c		\
+			ft_putchar.c	\
+			ft_putstr.c
 
 OBJS	=	ft_memset.o		\
 			ft_bzero.o		\
@@ -45,9 +46,8 @@ OBJS	=	ft_memset.o		\
 			ft_memmove.o	\
 			ft_memchr.o		\
 			ft_memcmp.o		\
-			ft_putchar.o	\
-			ft_putstr.o		\
 			ft_strlen.o		\
+			ft_strdup.o		\
 			ft_strcmp.o		\
 			ft_strncmp.o	\
 			ft_atoi.o		\
@@ -59,7 +59,9 @@ OBJS	=	ft_memset.o		\
 			ft_isprint.o	\
 			ft_toupper.o	\
 			ft_tolower.o	\
-			ft_strequ.o
+			ft_strequ.o		\
+			ft_putchar.o	\
+			ft_putstr.o
 
 HDRS	=	libft.h
 
