@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:42:06 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/01 23:42:19 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/02 23:01:46 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	char	*ret;
-
-	ret = s1;
-	while (*s1)
-		s1++;
-	while (*s2)
-		*s1++ = *s2++;
-	*s1 = '\0';
-	return (ret);
+	ft_strcpy(s1 + ft_strlen(s1), s2);
+	return (s1);
 }
+
+/*
+** The way of the noob:
+**
+**	char	*ret;
+**
+**	ret = s1;
+**	while (*s1)
+**		s1++;
+**	while (*s2)
+**		*s1++ = *s2++;
+**	*s1 = '\0';
+**	return (ret);
+*/
