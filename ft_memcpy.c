@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:26:52 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/30 12:39:58 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/02 15:29:09 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	source = (char *)src;
 	while (n--)
 		*destin++ = *source++;
-	return (destin);
+	return (dst);
 }
