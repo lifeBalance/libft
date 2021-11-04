@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:42:06 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/02 13:50:40 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/04 23:05:44 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	ret;
+	size_t	dstlen;
 
-	ret = ft_strlen(dst) + ft_strlen(src);
-	ft_strncat(dst, src, dstsize);
-	return (ret);
+	dstlen = ft_strlen(dst);
+	ft_memcpy(dst + dstlen, src, (dstsize - dstlen - 1));
+	ft_bzero((dst + dstlen + ft_strlen(src)), 1);
+	return (dstlen + ft_strlen(src));
 }
