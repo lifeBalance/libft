@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/04 00:56:13 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:45:39 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 
+void	*ft_memalloc(size_t size);
 int		ft_strequ(char const *s1, char const *s2);
 void	ft_putchar(char ch);
 void	ft_putstr(char *str);
