@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/05 18:20:02 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/06 11:00:10 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_strnew(size_t size);
 void	ft_strdel(char **as);
 void	ft_strclr(char *s);
 int		ft_strequ(char const *s1, char const *s2);
+int		ft_strnequ(char const *s1, char const *s2, size_t n);
+
 void	ft_putchar(char ch);
 void	ft_putstr(char *str);
 
