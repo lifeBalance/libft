@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/06 11:09:24 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/07 13:16:15 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int	ft_strequ(char const *s1, char const *s2)
 {
-	if (ft_strcmp(s1, s2) == 0)
-		return (1);
-	return (0);
+	return (ft_strcmp(s1, s2) == 0);
 }
 
-/* You dissapoint me, kid...
+/*
+** You dissapoint me, child...
 **{
 **	int	i;
 **
@@ -34,5 +33,12 @@ int	ft_strequ(char const *s1, char const *s2)
 **		return (1);
 **	else
 **		return (0);
+**}
+**
+** Still not good nuff:
+**{
+**	if (ft_strcmp(s1, s2) == 0)
+**		return (1);*
+**	return (0);*
 **}
 */
