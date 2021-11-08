@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/08 18:24:00 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/08 18:34:56 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRCS	=	ft_memset.c		\
 			ft_itoa.c		\
 			ft_putchar.c	\
 			ft_putstr.c		\
-			ft_putendl.c
+			ft_putendl.c	\
+			ft_putchar_fd.c
 
 OBJS	=	ft_memset.o		\
 			ft_bzero.o		\
@@ -113,7 +114,8 @@ OBJS	=	ft_memset.o		\
 			ft_itoa.o		\
 			ft_putchar.o	\
 			ft_putstr.o		\
-			ft_putendl.o
+			ft_putendl.o	\
+			ft_putchar_fd.o
 
 HDRS	=	libft.h
 

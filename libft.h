@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/08 18:24:19 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:34:02 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ char	*ft_itoa(int n);
 void	ft_putchar(char ch);
 void	ft_putstr(char const *str);
 void	ft_putendl(char const *str);
+void	ft_putchar_fd(char c, int fd);
 
 #endif
