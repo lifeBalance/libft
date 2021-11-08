@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/08 21:05:41 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/08 22:25:12 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	ft_putstr(char const *str);
 void	ft_putendl(char const *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *c, int fd);
+void	ft_putendl_fd(char const *str, int fd);
 
 #endif
