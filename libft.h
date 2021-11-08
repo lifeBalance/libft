@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/08 17:44:05 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:24:19 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
 void	ft_putchar(char ch);
-void	ft_putstr(char *str);
+void	ft_putstr(char const *str);
+void	ft_putendl(char const *str);
 
 #endif
