@@ -6,13 +6,13 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:38:52 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/10/29 11:21:05 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:18:57 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(char const *str)
 {
 	while (*str)
 		ft_putchar(*str++);
