@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/07 15:51:43 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/08 17:40:41 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCS	=	ft_memset.c		\
 			ft_strsub.c		\
 			ft_strjoin.c	\
 			ft_strtrim.c	\
+			ft_itoa.c		\
 			ft_putchar.c	\
 			ft_putstr.c
 
@@ -106,6 +107,7 @@ OBJS	=	ft_memset.o		\
 			ft_strsub.o		\
 			ft_strjoin.o	\
 			ft_strtrim.o	\
+			ft_itoa.o		\
 			ft_putchar.o	\
 			ft_putstr.o
 
