@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/09 11:46:10 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/09 15:44:42 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,3 +140,10 @@ fclean:	clean
 	/bin/rm -f $(NAME)
 
 re:	fclean all
+
+# To please Moulinette (who forbids extraneous '*.c' files), './main.c' is
+# a (gitignored) symlink to './eval_tests/main.c.test'. Rule use example:
+# 	$ make test f=FT_PUTCHAR
+test:	main.c $(HDRS)
+	gcc $(FLAGS) -L. -lft main.c -D$(fn) -o test
+	./test

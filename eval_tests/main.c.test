@@ -1,0 +1,668 @@
+#include "libft.h"
+#include <stdio.h>
+#include <string.h>
+
+#if defined(FT_STRITER)
+static void to_up(char *c) { *c = ft_toupper(*c); }
+#endif
+
+#ifdef FT_STRITERI
+static void to_up_idx(unsigned int i, char *c)
+{
+	*c = (i % 2 == 0) ? ft_toupper(*c) : ft_tolower(*c);
+}
+#endif
+
+#ifdef FT_STRMAP
+static char	to_up(char c) { return ft_toupper(c); }
+#endif
+
+#ifdef FT_STRMAPI
+static char	to_up_idx(unsigned int i, char c) {
+	return((i % 2 == 0) ? ft_toupper(c) : ft_tolower(c));
+}
+#endif
+
+#ifdef FT_STRSPLIT
+static void ft_print_arr_str(char **a) {
+	while (*a)
+	{
+		printf("'%s'\n", *a);
+		a++;
+	}
+}
+#endif
+
+int	main(void)
+{
+#ifdef FT_MEMSET
+	printf("* * * ft_memset * * *\n");
+	char s1[] = "hello world";
+	char s2[] = "hello world";
+
+	printf("Original string: '%s'\n", s1);
+	memset(s1, '*', 6);
+	printf("std: '%s'\n", s1);
+	ft_memset(s2, '*', 6);
+	printf("ft_: '%s'\n", s2);
+#endif
+
+#ifdef BZERO
+	printf("* * * ft_bzero * * *\n");
+	char s1[] = "hello world";
+	char s2[] = "hello world";
+
+	printf("Original string: '%s'\n", s2);
+	bzero(s2 + 4, 6);
+	printf("std: '%s'\n", s2);
+	ft_bzero(s1 + 4, 6);
+	printf("ft_: '%s'\n", s1);
+#endif
+
+#ifdef MEMCPY
+	printf("* * * ft_memcpy * * *\n");
+	char s1[] = "0123456789";
+	char s2[] = "0123456789";
+	char s3[] = "";
+	char s4[] = "";
+
+	memcpy(s1 + 2, "tutu", 3);
+	printf("%s\n", s1);
+	ft_memcpy(s2 + 2, "tutu", 3);
+	printf("%s\n", s2);
+	memcpy(s3 + 2, "", 0);
+	printf("%s\n", s3);
+	ft_memcpy(s4 + 2, "", 0);
+	printf("%s\n", s4);
+#endif
+
+#ifdef MEMCCPY
+	printf("* * * ft_memccpy * * *\n");
+	char s1[] = "0123456789";
+	char s2[] = "0123456789";
+
+	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "assortment", 'm', 10));
+	printf("ft_: '%s' - ret: '%s'\n", s2, ft_memccpy(s2, "assortment", 'm', 10));
+#endif
+
+#ifdef MEMMOVE
+	printf("* * * ft_memmove * * *\n");
+	char s1[] = "0123456789";
+	char s2[] = "0123456789";
+
+	printf("std: orig. val.: %p\n", s1 + 7);
+	printf("std: '%s' - ret: %p\n", s1, memmove(s1 + 7, s1, 3));
+	printf("std: '%p'\n", s1 + 2);
+	printf("std: orig. val.: %p\n", s1 + 2);
+	printf("std: '%s' - ret: %p\n\n", s1, memmove(s1 + 2, s1, 3));
+
+	printf("ft_: orig. val.: %p\n", s2 + 7);
+	printf("ft_: '%s' - ret: %p\n", s2, ft_memmove(s2 + 7, s2, 3));
+	printf("ft_: orig. val.: %p\n", s2 + 2);
+	printf("ft_: '%s' - ret: %p\n", s2, ft_memmove(s2 + 2, s2, 3));
+#endif
+
+#ifdef MEMCHR
+	printf("* * * ft_memchr * * *\n");
+	char *s = "hello world!";
+
+	printf("std: '%c' in '%s'? '%s'\n", 'o', s, memchr(s, 'o', ft_strlen(s)));
+	printf("ft_: '%c' in '%s'? '%s'\n", 'o', s, ft_memchr(s, 'o', ft_strlen(s)));
+	printf("std: '%c' in '%s'? '%s'\n", '\0', s, memchr(s, 0, ft_strlen(s)));
+	printf("ft_: '%c' in '%s'? '%s'\n", '\0', s, ft_memchr(s, 0, ft_strlen(s)));
+	printf("std: '%c' in '%s'? '%s'\n", 'a', s, memchr(s, 'a', ft_strlen(s)));
+	printf("ft_: '%c' in '%s'? '%s'\n", 'a', s, ft_memchr(s, 'a', ft_strlen(s)));
+#endif
+
+#ifdef MEMCMP
+	printf("* * * ft_memcmp * * *\n");
+	char *s1 = "\2001234";
+	size_t	len = strlen(s1);
+
+	printf("ft_: '%s' == '%s'? %d\n", s1, s1, ft_memcmp(s1, s1, len));
+	printf("std: '%s' == '%s'? %d\n", s1, s1, ft_memcmp(s1, s1, len));
+
+	printf("ft_: '%s' == '%s'? %d\n", s1, "\0", ft_memcmp(s1, "\0", len));
+	printf("std: '%s' == '%s'? %d\n", s1, "\0", memcmp(s1, "\0", len));
+#endif
+
+#ifdef STRLEN
+	printf("* * * ft_strlen * * *\n");
+	printf("std: '%s' = %lu\n", "hello", strlen("hello"));
+	printf("ft_: '%s' = %lu\n", "hello", ft_strlen("hello"));
+
+	printf("std: '%s' = %lu\n", "", strlen(""));
+	printf("ft_: '%s' = %lu\n", "", ft_strlen(""));
+#endif
+
+#ifdef STRDUP
+	printf("* * * ft_strdup * * *\n");
+	char *dup;
+	dup = strdup("hello");
+	printf("std: '%s', dup: '%s'\n", "hello", dup);
+	dup = ft_strdup("hello");
+	printf("ft_: '%s', dup: '%s'\n", "hello", dup);
+
+	dup = strdup("");
+	printf("std: '%s', dup: '%s'\n", "", dup);
+	dup = ft_strdup("");
+	printf("ft_: '%s', dup: '%s'\n", "", dup);
+	free(dup);
+#endif
+
+#ifdef STRCPY
+	printf("* * * ft_strcpy * * *\n");
+	char s1[] = "hello";
+	char s2[] = "hello";
+
+	strcpy(s1, "yo");
+	printf("std: '%s'\n", s1);
+	ft_strcpy(s2, "yo");
+	printf("ft_: '%s'\n", s2);
+
+	strcpy(s1, "12345");
+	printf("std: '%s'\n", s1);
+	ft_strcpy(s2, "12345");
+	printf("ft_: '%s'\n", s2);
+
+	//strcpy(s1, "abcdefg");
+	//printf("std: '%s'\n", s1);
+	ft_strcpy(s2, "abcdefg");
+	printf("ft_: '%s'\n", s2);
+#endif
+
+#ifdef STRNCPY
+	printf("* * * ft_strncpy * * *\n");
+	char s1[] = "hello";
+	char s2[] = "hello";
+
+	printf("std: '%s' ret: '%s'\n", s1, strncpy(s1, "yo", 1));
+	printf("ft_: '%s' ret: '%s'\n\n", s2, strncpy(s2, "yo", 1));
+
+	strcpy(s1, "hello");
+	strcpy(s2, "hello");
+
+	printf("std: '%s' ret: '%s'\n", s1, strncpy(s1, "yo", 4));
+	printf("ft_: '%s' ret: '%s'\n", s2, strncpy(s2, "yo", 4));
+#endif
+
+#ifdef STRCAT
+	printf("* * * ft_strcat * * *\n");
+	char s1[11] = "12345";
+	char fill[] = "***********";
+	char s2[11] = "12345";
+	char *p;
+	(void)fill;
+
+	p = strcat(s1, "abcde");
+	printf("std: '%s' ret: '%s'\n", s1, p);
+
+	p = ft_strcat(s2, "abcde");
+	printf("ft_: '%s' ret: '%s'\n", s2, p);
+
+	strcpy(s1, "12345");
+	strcpy(s2, "12345");
+
+	p = ft_strcat(s2, "ABCDEXXX");
+	printf("ft_: '%s' ret: '%s'\n", s2, p);
+
+	p = strcat(s1, "ABCDEXXX");
+	printf("std: '%s' ret: '%s'\n", s1, p);
+#endif
+
+#ifdef STRNCAT
+	printf("* * * ft_strncat * * *\n");
+	char s1[11] = "12345";
+	char s2[11] = "12345";
+	char *p;
+
+	p = strncat(s1, "abcde", 3);
+	printf("std: '%s' ret: '%s'\n", s1, p);
+
+	p = ft_strncat(s2, "abcde", 3);
+	printf("ft_: '%s' ret: '%s'\n", s2, p);
+
+	p = strncat(s1, "x", 3);
+	printf("std:'%s' ret: '%s'\n", s1, p);
+
+	p = ft_strncat(s2, "x", 3);
+	printf("ft_: '%s' ret: '%s'\n", s2, p);
+#endif
+
+#ifdef STRLCAT
+	printf("* * * ft_strlcat * * *\n");
+	int ret;
+	char s1[11] = "12345";
+	char s2[11] = "12345";
+
+	ret = strlcat(s1, "abcde", 11);
+	printf("std(%d): '%s'\n", ret, s1);
+	strcpy(s1, "12345");
+	ret = strlcat(s1, "x", 11);
+	printf("std(%d): '%s'\n\n", ret, s1);
+
+	ret = ft_strlcat(s2, "abcde", 11);
+	printf("ft_(%d): '%s'\n", ret, s2);
+	strcpy(s2, "12345");
+	ret = ft_strlcat(s2, "x", 11);
+	printf("ft_(%d): '%s'\n", ret, s2);
+#endif
+
+#ifdef STRCHR
+	char s1[] = "hello world";
+	printf("std: (%c) '%s'\n", 'h', strchr(s1, 'h'));
+	printf("std: (%c) '%s'\n", 'o', strchr(s1, 'o'));
+	printf("std: (%c) '%s'\n", 'x', strchr(s1, 'x'));
+	printf("std: (%c) '%s'\n", '\0', strchr(s1, '\0'));
+
+	printf("ft_: (%c) '%s'\n", 'h', ft_strchr(s1, 'h'));
+	printf("ft_: (%c) '%s'\n", 'o', ft_strchr(s1, 'o'));
+	printf("ft_: (%c) '%s'\n", 'x', ft_strchr(s1, 'x'));
+	printf("ft_: (%c) '%s'\n", '\0', ft_strchr(s1, '\0'));
+#endif
+
+#ifdef STRRCHR
+	char s1[] = "hello world";
+	printf("std: '%s'\n", strrchr(s1, 'o'));
+	printf("std: '%s'\n", strrchr(s1, '\0'));
+	printf("std: '%s'\n", strrchr(s1, 'x'));
+	printf("std: '%s'\n", strrchr(s1, 'h'));
+	printf("std: '%s'\n\n", strrchr(s1, 'd'));
+
+	printf("ft_: '%s'\n", ft_strrchr(s1, 'o'));
+	printf("ft_: '%s'\n", ft_strrchr(s1, '\0'));
+	printf("ft_: '%s'\n", ft_strrchr(s1, 'x'));
+	printf("ft_: '%s'\n", ft_strrchr(s1, 'h'));
+	printf("ft_: '%s'\n", ft_strrchr(s1, 'd'));
+#endif
+
+#ifdef STRSTR
+	printf("* * * ft_strstr * * *\n");
+	char *ptr;
+
+	ptr = ft_strstr("Foo Bar Baz", "Bar");
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strstr("Baz", "Foo Bar Baz");
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strstr("Foo Bar Baz", "");
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strstr("aaab.", "aab");
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strstr("", "Foo");
+	printf("'%s'\n", ptr);
+#endif
+
+#ifdef STRNSTR
+	printf("* * * ft_strnstr * * *\n");
+	char *ptr;
+
+	ptr = ft_strnstr("Foo Bar Baz", "Bar", 2);
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strnstr("Baz", "Foo Bar Baz", 11);
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strnstr("Foo Bar Baz", "", 3);
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strnstr("aaab.", "aab", 3);
+	printf("'%s'\n", ptr);
+
+	ptr = ft_strnstr("Foo", "Foo", 3);
+	printf("'%s'\n", ptr);
+#endif
+
+#ifdef STRCMP
+	printf("* * * ft_strcmp * * *\n");
+	char *a = "abc\0";
+	char *b = "abc\200";
+	char n[5];	/* null */
+	char empty[] = "\0";
+
+	printf("std: '%s' to '%s': %d\n", a, b, strcmp(a, b));
+	printf("ft_: '%s' to '%s': %d\n\n", a, b, ft_strcmp(a, b));
+
+	printf("std: '%s' to '%s': %d\n", b, a, strcmp(b, a));
+	printf("ft_: '%s' to '%s': %d\n\n", b, a, ft_strcmp(b, a));
+
+	printf("std: '%s' to '%s': %d\n", n, empty, strcmp(n, empty));
+	printf("ft_: '%s' to '%s': %d\n", n, empty, ft_strcmp(n, empty));
+#endif
+
+#ifdef STRNCMP
+	char *a = "abc\0";
+	char *b = "abc\200";
+	printf("* * * ft_strncmp * * *\n");
+	printf("strncmp %s to %s: %d\n", a, b, ft_strncmp(a, b, 4));
+	printf("strncmp %s to %s: %d\n", b, a, ft_strncmp(b, a, 4));
+#endif
+
+#ifdef ISALPHA
+	printf("* * * ft_isalpha * * *\n");
+	printf("isalpha('C')? %s\n", ft_isalpha('C') ? "true" : "false");
+	printf("isalpha('2')? %s\n", ft_isalpha('2') ? "true" : "false");
+	printf("isalpha('*')? %s\n", ft_isalpha('*') ? "true" : "false");
+	printf("isalpha(' ')? %s\n", ft_isalpha(' ') ? "true" : "false");
+#endif
+
+#ifdef ATOI
+	printf("* * * ft_atoi * * *\n");
+	printf("atoi(\"10\"): %d\n", ft_atoi("10"));
+	printf("atoi(\"0\"): %d\n", ft_atoi("0"));
+	printf("atoi(\"-2147483648\"): %d\n", ft_atoi("-2147483648"));
+	printf("atoi(\"2147483648\"): %d\n", ft_atoi("2147483648"));
+	printf("atoi(\"2147483647\"): %d\n", ft_atoi("2147483647"));
+#endif
+
+#ifdef ISDIGIT
+	printf("* * * ft_isdigit * * *\n");
+	printf("isdigit('3')? %s\n", ft_isdigit('3') ? "true" : "false");
+	printf("isdigit('a')? %s\n", ft_isdigit('a') ? "true" : "false");
+	printf("isdigit('*')? %s\n", ft_isdigit('*') ? "true" : "false");
+	printf("isdigit(' ')? %s\n", ft_isdigit(' ') ? "true" : "false");
+#endif
+
+#ifdef ISALNUM
+	printf("* * * ft_isalnum * * *\n");
+	printf("isalnum('3')? %s\n", ft_isalnum('3') ? "true" : "false");
+	printf("isalnum('a')? %s\n", ft_isalnum('a') ? "true" : "false");
+	printf("isalnum('*')? %s\n", ft_isalnum('*') ? "true" : "false");
+	printf("isalnum(' ')? %s\n", ft_isalnum(' ') ? "true" : "false");
+#endif
+
+#ifdef ISASCII
+	int ch;
+	printf("* * * ft_isascii * * *\n");
+	for (ch = -3; ch <= 127; ch++)
+		printf("isascii('%c')? %s\n", ch, ft_isascii(ch) ? "true" : "false");
+#endif
+
+#ifdef ISPRINT
+	int ch;
+	printf("* * * ft_isprint * * *\n");
+	for (ch = 0; ch <= 127; ch++)
+		printf("isprint('%c')? %s\n", ch, ft_isprint(ch) ? "true" : "false");
+#endif
+
+#ifdef TOUPPER
+	int ch;
+	printf("* * * ft_toupper * * *\n");
+	for (ch = '`'; ch <= 'z'; ch++)
+		printf("toupper('%c'): %c\n", ch, ft_toupper(ch));
+#endif
+
+#ifdef TOLOWER
+	int ch;
+	printf("* * * ft_tolower * * *\n");
+	for (ch = '@'; ch <= 'Z'; ch++)
+		printf("tolower('%c'): %c\n", ch, ft_tolower(ch));
+#endif
+
+#ifdef FT_MEMALLOCDEL
+	printf("* * * ft_memalloc * * *\n");
+	void *area = NULL;
+	void *dangling;
+
+	printf("Area points to %p\n", area);
+	area = ft_memalloc(3);
+	printf("Area points to %p\n", area);
+	ft_memdel(&area);
+	printf("Area points to %p\n", area);
+	ft_memdel(&dangling);
+	printf("Dangling points to %p\n", area);
+#endif
+
+#ifdef FT_STRNEWDEL
+	printf("* * * ft_strnew * * *\n");
+	char *s;
+	char *dangling;
+
+	s = ft_strnew(6);
+	printf("'%s'\n", s);
+	ft_strcpy(s, "hello");
+	printf("'%s'\n", s);
+	ft_strclr(s);
+	printf("'%s'\n", s);
+	ft_strdel(&s);
+	printf("'%p'\n", s);
+	ft_strdel(&dangling);
+	ft_strclr(dangling);
+#endif
+
+#ifdef FT_STRITER
+	printf("* * * ft_striter * * *\n");
+	char s[] = "abcdef";
+
+	ft_striter(s, to_up);
+	printf("%s\n", s);
+#endif
+
+#ifdef FT_STRITERI
+	printf("* * * ft_striteri * * *\n");
+	char s[] = "abcdef";
+
+	ft_striteri(s, to_up_idx);
+	printf("%s\n", s);
+#endif
+
+#ifdef FT_STRMAP
+	printf("* * * ft_strmap * * *\n");
+	char *s;
+
+	s = ft_strmap("hello, world", to_up);
+	printf("'%s'\n", s);
+	ft_strdel(&s);
+#endif
+
+#ifdef FT_STRMAPI
+	printf("* * * ft_strmapi * * *\n");
+	char *s;
+
+	s = ft_strmapi("hello, world", to_up_idx);
+	printf("'%s'\n", s);
+	ft_strdel(&s);
+#endif
+
+#ifdef FT_STREQU
+	printf("* * * ft_strequ * * *\n");
+	char *s1 = "123";
+	char n1[3];	/* null string */
+	char n2[3];
+	char empty[1] = "\0";
+
+	printf("'%s' == '%s'? '%s'\n", s1, "123", ft_strequ(s1, "123")? "y" : "n");
+	printf("'%s' == '%s'? '%s'\n", s1, "129", ft_strequ(s1, "129")? "y" : "n");
+	printf("'%s' == '%s'? '%s'\n", s1, "", ft_strequ(s1, "")? "y" : "n");
+	printf("'%s' == '%s'? '%s'\n", "", "", ft_strequ("", "")? "y" : "n");
+	printf("'%s' == '%s'? '%s'\n", n1, n2, ft_strequ(n1, n2)? "y" : "n");
+	printf("'%s' == '%s'? '%s'\n", n1, empty, ft_strequ(n1, empty)? "y" : "n");
+#endif
+
+#ifdef FT_STRNEQU
+	printf("* * * ft_strnequ * * *\n");
+	char *s1 = "123";
+
+	printf("'%s' == '%s'? '%d'\n", s1, "123", ft_strnequ(s1, "123", 4));
+	printf("'%s' == '%s'? '%d'\n", s1, "129", ft_strnequ(s1, "129", 3));
+	printf("'%s' == '%s'? '%d'\n", s1, "", ft_strnequ(s1, "", 3));
+#endif
+
+#ifdef FT_STRSUB
+	printf("* * * ft_strjoin * * *\n");
+	char *s1 = "123";
+	char *sub;
+
+	sub = ft_strsub(s1, 1, 1);
+	printf("'%s' (len: %ld)\n", sub, ft_strlen(sub));
+	sub = ft_strsub(s1, 0, 3);
+	printf("'%s' (len: %ld)\n", sub, ft_strlen(sub));
+	sub = ft_strsub(s1, 0, 2);
+	printf("'%s' (len: %ld)\n", sub, ft_strlen(sub));
+#endif
+
+#ifdef FT_STRJOIN
+	printf("* * * ft_strsub * * *\n");
+	char *join;
+
+	join = ft_strjoin("hello", " world");
+	printf("'%s' (len: %ld)\n", join, ft_strlen(join));
+	ft_strdel(&join);
+#endif
+
+#ifdef FT_STRTRIM
+	printf("* * * ft_strtrim * * *\n");
+	char *s;
+
+	s = ft_strtrim("\t\nhello world \n\t");
+	printf("'%s'\n", s);
+	ft_strdel(&s);
+#endif
+
+#ifdef FT_STRSPLIT
+	printf("* * * ft_strsplit * * *\n");
+	
+	ft_print_arr_str(ft_strsplit("**hello*world", '*'));
+	ft_putchar('\n');
+	ft_print_arr_str(ft_strsplit("*hello*fellow***students*", '*'));
+	ft_putchar('\n');
+	ft_print_arr_str(ft_strsplit("**fak da police*", '*'));
+	ft_putchar('\n');
+	ft_print_arr_str(ft_strsplit("hello world*", '*'));
+	ft_putchar('\n');
+	ft_print_arr_str(ft_strsplit("*last one", '*'));
+	ft_putchar('\n');
+	ft_print_arr_str(ft_strsplit("no, for real...", '*'));
+#endif
+
+#ifdef FT_ITOA
+	printf("* * * ft_itoa * * *\n");
+	char *s;
+
+	s = ft_itoa(0);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+	s = ft_itoa(201);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+	s = ft_itoa(-201);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+	s = ft_itoa(234);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+	s = ft_itoa(-234);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+	s = ft_itoa(-2147483648);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+	s = ft_itoa(2147483647);
+	printf("%s\n", s);
+	ft_strdel(&s);
+
+#endif
+
+#ifdef FT_PUTCHAR
+	printf("* * * ft_putchar * * *\n");
+	for (int ch = 0; ch <= 256; ch++)
+		ft_putchar(ch);
+	ft_putchar('\n');
+#endif
+
+#ifdef FT_PUTSTR
+	printf("* * * ft_putstr * * *\n");
+	char *s1;
+	char *s2 = NULL;
+
+	ft_putstr("'hello world'\n");
+	ft_putstr("''\n");
+	ft_putstr(s1);
+	ft_putstr(s2);
+#endif
+
+#ifdef FT_PUTENDL
+	printf("* * * ft_putendl * * *\n");
+	char *s1 = NULL;
+	char *s2; /* wild pointer: undefined behaviour */
+
+	ft_putendl("'hello world'");
+	ft_putendl(s1);
+	ft_putendl(s2);
+#endif
+
+#ifdef FT_PUTNBR
+	printf("* * * ft_putnbr * * *\n");
+
+	ft_putnbr(234);
+	ft_putchar('\n');
+	ft_putnbr(-2147483648);
+	ft_putchar('\n');
+	ft_putnbr(2147483647);
+	ft_putchar('\n');
+	ft_putnbr(10001);
+	ft_putchar('\n');
+	ft_putnbr(0);
+	ft_putchar('\n');
+#endif
+
+#ifdef FT_PUTCHAR_FD
+	printf("* * * ft_putchar_fd * * *\n");
+
+	for (int ch = 0; ch <= 256; ch++)
+		ft_putchar_fd(ch, 2);
+	ft_putchar_fd('\n', 2);
+#endif
+
+#ifdef FT_PUTSTR_FD
+	printf("* * * ft_putstr_fd * * *\n");
+	char *s1 = NULL;
+	char *s2; /* wild pointer: undefined behaviour */
+
+	ft_putstr_fd("hello world in stderr\n", 2);
+	ft_putstr_fd(s1, 2);
+	ft_putstr_fd("*\n", 2);
+	ft_putstr_fd(s2, 2);
+#endif
+
+#ifdef FT_PUTENDL_FD
+	printf("* * * ft_putendl_fd * * *\n");
+	char *s1 = NULL;
+	char *s2; /* wild pointer: undefined behaviour */
+
+	ft_putendl("'hello world'");
+	ft_putendl(s1);
+	ft_putendl("*");
+	ft_putendl(s2);
+#endif
+
+#ifdef FT_PUTNBR_FD
+	printf("* * * ft_putnbr_fd * * *\n");
+	ft_putnbr_fd(234, 1);
+#endif
+
+	return (0);
+}
+
+/*
+** To compile:
+** gcc -Wall -Werror -Wextra main.c -L. -lft
+** No need to set the location of the header because it's at the root of the
+** directory and not nested in some subfolder (./includes/ft_libft.h):
+**
+** To set the location of the Static Library (./libft.a):
+**		-L.
+**
+** To set the Name of the static library (libft.a, but
+** we gotta leave the 'lib' and the '.a' extension out.):
+**		-lft
+*/
