@@ -88,13 +88,23 @@ int	main(void)
 	printf("%s\n", nu);
 #endif
 
-#ifdef MEMCCPY
+#ifdef FT_MEMCCPY
 	printf("* * * ft_memccpy * * *\n");
 	char s1[] = "0123456789";
 	char s2[] = "0123456789";
+	char *nu = NULL;
 
-	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "assortment", 'm', 10));
-	printf("ft_: '%s' - ret: '%s'\n", s2, ft_memccpy(s2, "assortment", 'm', 10));
+	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "ABCDE", 'C', 5));
+	printf("ft_: '%s' - ret: '%s'\n\n", s2, ft_memccpy(s2, "ABCDE", 'C', 5));
+
+	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "ABCDE", 'A', 5));
+	printf("ft_: '%s' - ret: '%s'\n\n", s2, ft_memccpy(s2, "ABCDE", 'A', 5));
+
+	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "ABCDE", 'o', 5));
+	printf("ft_: '%s' - ret: '%s'\n\n", s2, ft_memccpy(s2, "ABCDE", 'o', 5));
+
+	printf("ft_: '%s' - ret: '%s'\n", nu, ft_memccpy(nu, "ABCDE", 'C', 5));
+	printf("ft_: '%s' - ret: '%s'\n", s2, ft_memccpy(s2, NULL, 'C', 5));
 #endif
 
 #ifdef MEMMOVE
