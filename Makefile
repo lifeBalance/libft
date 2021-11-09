@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/09 11:37:25 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/09 11:46:10 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ SRCS	=	ft_memset.c		\
 			ft_strrchr.c	\
 			ft_strstr.c		\
 			ft_strnstr.c	\
-\
 			ft_strcmp.c		\
 			ft_strncmp.c	\
 			ft_atoi.c		\
@@ -88,7 +87,6 @@ OBJS	=	ft_memset.o		\
 			ft_strrchr.o	\
 			ft_strstr.o		\
 			ft_strnstr.o	\
-\
 			ft_strcmp.o		\
 			ft_strncmp.o	\
 			ft_atoi.o		\
@@ -129,9 +127,9 @@ HDRS	=	libft.h
 
 .PHONY:	all clean fclean re
 
-all:	$(NAME) $(HDRS)
+all:	$(NAME)
 
-$(NAME):	$(SRCS)
+$(NAME):	$(SRCS) $(HDRS)
 	gcc $(FLAGS) $(SRCS) -I $(HDRS) -c
 	ar rcs $(NAME) $(OBJS)
 
