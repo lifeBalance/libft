@@ -54,16 +54,21 @@ int	main(void)
 	//ft_memset(n2, '*', 6);
 #endif
 
-#ifdef BZERO
+#ifdef FT_BZERO
 	printf("* * * ft_bzero * * *\n");
 	char s1[] = "hello world";
 	char s2[] = "hello world";
+	char *n1 = NULL;
 
 	printf("Original string: '%s'\n", s2);
 	bzero(s2 + 4, 6);
 	printf("std: '%s'\n", s2);
 	ft_bzero(s1 + 4, 6);
 	printf("ft_: '%s'\n", s1);
+
+	//bzero(n1, 6); /* the standard fn segfaults when NULL is received */
+	ft_bzero(n1, 6);
+	printf("ft_: '%s'\n", n1);
 #endif
 
 #ifdef MEMCPY
