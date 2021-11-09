@@ -71,21 +71,21 @@ int	main(void)
 	printf("ft_: '%s'\n", n1);
 #endif
 
-#ifdef MEMCPY
+#ifdef FT_MEMCPY
 	printf("* * * ft_memcpy * * *\n");
 	char s1[] = "0123456789";
 	char s2[] = "0123456789";
-	char s3[] = "";
-	char s4[] = "";
+	char *nu = NULL;
 
-	memcpy(s1 + 2, "tutu", 3);
+	memcpy(s1 + 2, "ABCD", 3);
 	printf("%s\n", s1);
-	ft_memcpy(s2 + 2, "tutu", 3);
+	ft_memcpy(s2 + 2, "ABCD", 3);
 	printf("%s\n", s2);
-	memcpy(s3 + 2, "", 0);
-	printf("%s\n", s3);
-	ft_memcpy(s4 + 2, "", 0);
-	printf("%s\n", s4);
+
+	ft_memcpy(s1, nu, 2);
+	printf("%s\n", s1);
+	ft_memcpy(nu, s1, 2);
+	printf("%s\n", nu);
 #endif
 
 #ifdef MEMCCPY
