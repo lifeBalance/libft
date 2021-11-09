@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:42:06 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/04 21:29:54 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:42:14 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	size_t len_s1;
+	size_t	len_s1;
 
 	len_s1 = ft_strlen(s1);
 	ft_memcpy(s1 + len_s1, s2, ft_strlen(s2));
