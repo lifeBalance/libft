@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:42:06 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/09 11:42:14 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/10 23:24:25 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strcat(char *s1, const char *s2)
 
 /*
 ** The way of the noob:
-**
+**{
 **	char	*ret;
 **
 **	ret = s1;
@@ -34,4 +34,5 @@ char	*ft_strcat(char *s1, const char *s2)
 **		*s1++ = *s2++;
 **	*s1 = '\0';
 **	return (ret);
+**}
 */

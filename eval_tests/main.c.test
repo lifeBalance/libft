@@ -314,7 +314,7 @@ int	main(void)
 	printf("std: '%s' ret: '%s'\n", s1, p);
 #endif
 
-#ifdef STRNCAT
+#ifdef FT_STRNCAT
 	printf("* * * ft_strncat * * *\n");
 	char s1[11] = "12345";
 	char s2[11] = "12345";
@@ -324,10 +324,10 @@ int	main(void)
 	printf("std: '%s' ret: '%s'\n", s1, p);
 
 	p = ft_strncat(s2, "abcde", 3);
-	printf("ft_: '%s' ret: '%s'\n", s2, p);
+	printf("ft_: '%s' ret: '%s'\n\n", s2, p);
 
 	p = strncat(s1, "x", 3);
-	printf("std:'%s' ret: '%s'\n", s1, p);
+	printf("std: '%s' ret: '%s'\n", s1, p);
 
 	p = ft_strncat(s2, "x", 3);
 	printf("ft_: '%s' ret: '%s'\n", s2, p);
