@@ -42,16 +42,17 @@ int	main(void)
 	printf("* * * ft_memset * * *\n");
 	char s1[] = "hello world";
 	char s2[] = "hello world";
-	char *n1 = NULL;
-	//char n2[] = NULL; /* It fails on 'main.c': Not a valid initializer :-) */
 
 	printf("Original string: '%s'\n", s1);
 	memset(s1, '*', 6);
 	printf("std: '%s'\n", s1);
 	ft_memset(s2, '*', 6);
 	printf("ft_: '%s'\n", s2);
-	ft_memset(n1, '*', 6);
-	//ft_memset(n2, '*', 6);
+
+	// NULL checks are not needed. According to the C standard,
+	// dereferencing 'NULL' results in 'undefined behaviour'.
+	//ft_memset(NULL, '*', 6);
+	//memset(NULL, '*', 6);
 #endif
 
 #ifdef FT_BZERO
