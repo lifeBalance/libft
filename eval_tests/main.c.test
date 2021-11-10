@@ -101,19 +101,26 @@ int	main(void)
 	printf("* * * ft_memccpy * * *\n");
 	char s1[] = "0123456789";
 	char s2[] = "0123456789";
-	char *nu = NULL;
+	char *p1;
+	char *p2;
 
-	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "ABCDE", 'C', 5));
-	printf("ft_: '%s' - ret: '%s'\n\n", s2, ft_memccpy(s2, "ABCDE", 'C', 5));
+	p1 = memccpy(s1, "ABCDE", 'C', 5);
+	printf("std: '%s' - ret: '%s'\n", s1, p1);
+	p2 = ft_memccpy(s2, "ABCDE", 'C', 5);
+	printf("ft_: '%s' - ret: '%s'\n\n", s2, p2);
 
-	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "ABCDE", 'A', 5));
-	printf("ft_: '%s' - ret: '%s'\n\n", s2, ft_memccpy(s2, "ABCDE", 'A', 5));
+	p1 = memccpy(s1, "ABCDE", 'A', 5);
+	printf("std: '%s' - ret: '%s'\n", s1, p1);
+	p2 = ft_memccpy(s2, "ABCDE", 'A', 5);
+	printf("ft_: '%s' - ret: '%s'\n\n", s2, p2);
 
-	printf("std: '%s' - ret: '%s'\n", s1, memccpy(s1, "ABCDE", 'o', 5));
-	printf("ft_: '%s' - ret: '%s'\n\n", s2, ft_memccpy(s2, "ABCDE", 'o', 5));
+	p1 = memccpy(s1 + 5, "ABCDE", 'o', 5);
+	printf("std: '%s' - ret: '%s'\n", s1, p1);
+	p2 = ft_memccpy(s2 + 5, "ABCDE", 'o', 5);
+	printf("ft_: '%s' - ret: '%s'\n\n", s2, p2);
 
-	printf("ft_: '%s' - ret: '%s'\n", nu, ft_memccpy(nu, "ABCDE", 'C', 5));
-	printf("ft_: '%s' - ret: '%s'\n", s2, ft_memccpy(s2, NULL, 'C', 5));
+	// NULL checks are not needed. According to the C standard,
+	// dereferencing 'NULL' results in 'undefined behaviour'.
 #endif
 
 #ifdef FT_MEMMOVE
