@@ -127,25 +127,29 @@ int	main(void)
 	printf("* * * ft_memmove * * *\n");
 	char s1[] = "0123456789";
 	char s2[] = "0123456789";
+	char *p1;
+	char *p2;
 
 	// overlapping
 	printf("Overlapping strings:\n");
-	printf("std: orig. dst: %p\n", s1 + 3);
-	printf("std: retu. dst: %p - '%s'\n",      memmove(s1 + 2, s1, 5), s1);
-	printf("ft_: orig. dst: %p\n", s2 + 3);
-	printf("ft_: retu. dst: %p - '%s'\n\n", ft_memmove(s2 + 2, s2, 5), s2);
+	p1 = memmove(s1 + 2, s1, 5);
+	printf("std: %s (%p - %p)\n", s1, p1, s1 + 2);
+
+	p2 = memmove(s2 + 2, s2, 5);
+	printf("ft_: %s (%p - %p)\n\n", s2, p2, s2 + 2);
+
+	// Restore string values
+	strcpy(s1, "0123456789");
+	strcpy(s2, "0123456789");
 
 	// non-overlapping
-	printf("std: orig. dst: %p\n", s1 + 2);
-	printf("std: retu. dst: %p - '%s'\n",      memmove(s1, s1 + 1, 5), s1);
-	printf("ft_: orig. dst: %p\n", s2 + 2);
-	printf("ft_: retu. dst: %p - '%s'\n\n", ft_memmove(s2, s2 + 1, 5), s2);
+	p1 = memmove(s1, s1 + 1, 5);
+	printf("std: %s (%p - %p)\n", s1, p1, s1);
 
-	// tests for NULL
-	printf("ft_: ret: %p - '%s'\n", NULL, ft_memmove(NULL, s2, 55));
-	//printf("std: ret: %p - '%s'\n", NULL,    memmove(NULL, s2, 55));
-	printf("ft_: ret: %s - '%s'\n", s2, ft_memmove(s2 + 2, NULL, 55));
-	//printf("std: ret: %s - '%s'\n", s2, memmove(s2 + 2, NULL, 5));
+	p2 = memmove(s2, s2 + 1, 5);
+	printf("ft_: %s (%p - %p)\n", s2, p2, s2);
+
+	// F..K NULL checks!!!
 #endif
 
 #ifdef FT_MEMCHR
