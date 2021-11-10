@@ -267,19 +267,27 @@ int	main(void)
 	printf("ft_: '%s' (%ld) ret: '%s'\n", s2, strlen(s2), p2);
 #endif
 
-#ifdef STRNCPY
+#ifdef FT_STRNCPY
 	printf("* * * ft_strncpy * * *\n");
 	char s1[] = "hello";
 	char s2[] = "hello";
+	char *p1;
+	char *p2;
 
-	printf("std: '%s' ret: '%s'\n", s1, strncpy(s1, "yo", 1));
-	printf("ft_: '%s' ret: '%s'\n\n", s2, strncpy(s2, "yo", 1));
+	// length of source (3) is greater than 'n' (1)
+	p1 = strncpy(s1, "cho", 1);
+	printf("std: '%s' ret: '%s'\n", s1, p1);
+	p2 = ft_strncpy(s2, "cho", 1);
+	printf("ft_: '%s' ret: '%s'\n\n", s2, p2);
 
 	strcpy(s1, "hello");
 	strcpy(s2, "hello");
 
-	printf("std: '%s' ret: '%s'\n", s1, strncpy(s1, "yo", 4));
-	printf("ft_: '%s' ret: '%s'\n", s2, strncpy(s2, "yo", 4));
+	// length of source (2) is less than 'n' (4)
+	p1 = strncpy(s1, "yo", 4);
+	printf("std: '%s' ret: '%s'\n", s1, p1);
+	p2 = ft_strncpy(s2, "yo", 4);
+	printf("ft_: '%s' ret: '%s'\n\n", s2, p2);
 #endif
 
 #ifdef STRCAT
