@@ -242,25 +242,29 @@ int	main(void)
 	free(dup2);
 #endif
 
-#ifdef STRCPY
+#ifdef FT_STRCPY
 	printf("* * * ft_strcpy * * *\n");
 	char s1[] = "hello";
 	char s2[] = "hello";
+	char *p1;
+	char *p2;
 
-	strcpy(s1, "yo");
-	printf("std: '%s'\n", s1);
-	ft_strcpy(s2, "yo");
-	printf("ft_: '%s'\n", s2);
+	p1 = strcpy(s1, "yo");
+	printf("std: '%s' (%ld) ret: '%s'\n", s1, strlen(s1), p1);
+	p2 = ft_strcpy(s2, "yo");
+	printf("ft_: '%s' (%ld) ret: '%s'\n\n", s2, strlen(s2), p2);
 
-	strcpy(s1, "12345");
-	printf("std: '%s'\n", s1);
-	ft_strcpy(s2, "12345");
-	printf("ft_: '%s'\n", s2);
+	p1 = strcpy(s1, "12345");
+	printf("std: '%s' (%ld) ret: '%s'\n", s1, strlen(s1), p1);
+	p2 = ft_strcpy(s2, "12345");
+	printf("ft_: '%s' (%ld) ret: '%s'\n\n", s2, strlen(s2), p2);
 
-	//strcpy(s1, "abcdefg");
-	//printf("std: '%s'\n", s1);
-	ft_strcpy(s2, "abcdefg");
-	printf("ft_: '%s'\n", s2);
+	// If the destination string of a strcpy() is not large enough,
+	// then anything might happen... (from linux man strcpy).
+	//p1 = strcpy(s1, "abcdefg");		/* crashes */
+	//printf("std: '%s' (%ld) ret: '%s'\n", s1, strlen(s1), p1);
+	p2 = ft_strcpy(s2, "abcdefg");
+	printf("ft_: '%s' (%ld) ret: '%s'\n", s2, strlen(s2), p2);
 #endif
 
 #ifdef STRNCPY

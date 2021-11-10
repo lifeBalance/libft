@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:26:52 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/04 19:59:36 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/10 21:55:16 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*ft_strcpy(char *dst, const char *src)
 
 /*
 **  The old basecamp way, when we couln't reuse code...
+**{
 **	int	i;
 **
 **	i = 0;
@@ -31,4 +32,5 @@ char	*ft_strcpy(char *dst, const char *src)
 **	}
 **	dst[i] = src[i];
 **	return (dst);
+**}	
 */
