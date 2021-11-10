@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/01 11:47:11 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/10 21:25:11 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*ft_strdup(const char *s1)
 {
 	char	*dup;
 
-	dup = (char *)malloc(ft_strlen(s1) + 1);
+	dup = ft_strnew(ft_strlen(s1));
 	if (!dup)
-		exit (EXIT_FAILURE);
+		return (NULL);
 	return (ft_strcpy(dup, s1));
 }

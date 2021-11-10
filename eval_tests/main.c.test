@@ -219,19 +219,27 @@ int	main(void)
 	printf("ft_: '%s' = %lu\n", "", ft_strlen(""));
 #endif
 
-#ifdef STRDUP
+#ifdef FT_STRDUP
 	printf("* * * ft_strdup * * *\n");
-	char *dup;
-	dup = strdup("hello");
-	printf("std: '%s', dup: '%s'\n", "hello", dup);
-	dup = ft_strdup("hello");
-	printf("ft_: '%s', dup: '%s'\n", "hello", dup);
+	char *dup1;
+	char *dup2;
 
-	dup = strdup("");
-	printf("std: '%s', dup: '%s'\n", "", dup);
-	dup = ft_strdup("");
-	printf("ft_: '%s', dup: '%s'\n", "", dup);
-	free(dup);
+	dup1 = strdup("hello");
+	printf("std: '%s' (%ld), dup: '%s' (%ld)\n",
+	"hello", strlen("hello"), dup1, strlen(dup1));
+	dup2 = ft_strdup("hello");
+	printf("ft_: '%s' (%ld), dup: '%s' (%ld)\n",
+	"hello", strlen("hello"), dup2, strlen(dup2));
+
+	dup1 = strdup("");
+	printf("std: '%s' (%ld), dup: '%s' (%ld)\n",
+	"", strlen(""), dup1, strlen(dup1));
+	dup2 = ft_strdup("");
+	printf("ft_: '%s' (%ld), dup: '%s' (%ld)\n",
+	"", strlen(""), dup2, strlen(dup2));
+
+	free(dup1);
+	free(dup2);
 #endif
 
 #ifdef STRCPY
