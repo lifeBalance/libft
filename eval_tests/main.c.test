@@ -132,16 +132,28 @@ int	main(void)
 	//printf("std: ret: %s - '%s'\n", s2, memmove(s2 + 2, NULL, 5));
 #endif
 
-#ifdef MEMCHR
+#ifdef FT_MEMCHR
 	printf("* * * ft_memchr * * *\n");
 	char *s = "hello world!";
+	size_t	len = ft_strlen(s);
 
-	printf("std: '%c' in '%s'? '%s'\n", 'o', s, memchr(s, 'o', ft_strlen(s)));
-	printf("ft_: '%c' in '%s'? '%s'\n", 'o', s, ft_memchr(s, 'o', ft_strlen(s)));
-	printf("std: '%c' in '%s'? '%s'\n", '\0', s, memchr(s, 0, ft_strlen(s)));
-	printf("ft_: '%c' in '%s'? '%s'\n", '\0', s, ft_memchr(s, 0, ft_strlen(s)));
-	printf("std: '%c' in '%s'? '%s'\n", 'a', s, memchr(s, 'a', ft_strlen(s)));
-	printf("ft_: '%c' in '%s'? '%s'\n", 'a', s, ft_memchr(s, 'a', ft_strlen(s)));
+	printf("std: '%c' in '%s'? '%s'\n", 'h', s, memchr(s, 'h', len));
+	printf("ft_: '%c' in '%s'? '%s'\n\n", 'h', s, ft_memchr(s, 'h', len));
+
+	printf("std: '%c' in '%s'? '%s'\n", 'o', s, memchr(s, 'o', len));
+	printf("ft_: '%c' in '%s'? '%s'\n\n", 'o', s, ft_memchr(s, 'o', len));
+
+	printf("std: '%c' in '%s'? '%s'\n", '!', s, memchr(s, '!', len));
+	printf("ft_: '%c' in '%s'? '%s'\n\n", '!', s, ft_memchr(s,'!', len));
+
+	printf("std: '%c' in '%s'? '%s'\n", '\0', s, memchr(s, 0, len));
+	printf("ft_: '%c' in '%s'? '%s'\n\n", '\0', s, ft_memchr(s, 0, len));
+
+	printf("std: '%c' in '%s'? '%s'\n", 'a', s, memchr(s, 'a', len));
+	printf("ft_: '%c' in '%s'? '%s'\n\n", 'a', s, ft_memchr(s, 'a', len));
+
+	// passing NULL
+	printf("ft_: '%c' in '%s'? '%s'\n", 'a', NULL, ft_memchr(NULL, 'a', 1));
 #endif
 
 #ifdef MEMCMP
