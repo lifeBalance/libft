@@ -59,7 +59,6 @@ int	main(void)
 	printf("* * * ft_bzero * * *\n");
 	char s1[] = "hello world";
 	char s2[] = "hello world";
-	char *n1 = NULL;
 
 	printf("Original string: '%s'\n", s2);
 	bzero(s2 + 4, 6);
@@ -67,9 +66,10 @@ int	main(void)
 	ft_bzero(s1 + 4, 6);
 	printf("ft_: '%s'\n", s1);
 
-	//bzero(n1, 6); /* the standard fn segfaults when NULL is received */
-	ft_bzero(n1, 6);
-	printf("ft_: '%s'\n", n1);
+	// NULL checks are not needed. According to the C standard,
+	// dereferencing 'NULL' results in 'undefined behaviour'.
+	//bzero(NULL, 6);
+	//ft_bzero(NULL, 6);
 #endif
 
 #ifdef FT_MEMCPY
