@@ -210,7 +210,7 @@ int	main(void)
 	printf("ft_: '%s' == '%s'? %d\n", "abc", "bbc", ret2);
 #endif
 
-#ifdef STRLEN
+#ifdef FT_STRLEN
 	printf("* * * ft_strlen * * *\n");
 	printf("std: '%s' = %lu\n", "hello", strlen("hello"));
 	printf("ft_: '%s' = %lu\n", "hello", ft_strlen("hello"));
