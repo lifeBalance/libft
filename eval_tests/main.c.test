@@ -156,16 +156,21 @@ int	main(void)
 	printf("ft_: '%c' in '%s'? '%s'\n", 'a', NULL, ft_memchr(NULL, 'a', 1));
 #endif
 
-#ifdef MEMCMP
+#ifdef FT_MEMCMP
 	printf("* * * ft_memcmp * * *\n");
 	char *s1 = "\2001234";
 	size_t	len = strlen(s1);
 
 	printf("ft_: '%s' == '%s'? %d\n", s1, s1, ft_memcmp(s1, s1, len));
-	printf("std: '%s' == '%s'? %d\n", s1, s1, ft_memcmp(s1, s1, len));
+	printf("std: '%s' == '%s'? %d\n\n", s1, s1, ft_memcmp(s1, s1, len));
 
 	printf("ft_: '%s' == '%s'? %d\n", s1, "\0", ft_memcmp(s1, "\0", len));
-	printf("std: '%s' == '%s'? %d\n", s1, "\0", memcmp(s1, "\0", len));
+	printf("std: '%s' == '%s'? %d\n\n", s1, "\0", memcmp(s1, "\0", len));
+
+	// NULL checks (not needed; dereferencing NULL == undefined behaviour)
+	//printf("std: '%s' == '%s'? %d\n", s1, "\0", memcmp(NULL, "\0", len));
+	//printf("ft_: '%s' == '%s'? %d\n", s1, NULL, ft_memcmp(s1, NULL, len));
+	//printf("ft_: '%s' == '%s'? %d\n", NULL, s1, ft_memcmp(NULL, s1, len));
 #endif
 
 #ifdef STRLEN
