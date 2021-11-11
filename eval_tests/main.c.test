@@ -434,17 +434,18 @@ int	main(void)
 	printf("ft_: '%s' (ret: %d) null-ended? %d\n", s2, ret, s2[7] == '\0');
 #endif
 
-#ifdef STRCHR
-	char s1[] = "hello world";
+#ifdef FT_STRCHR
+	char s1[] = "hello world";	// len == 11 chars + null (null at index 11).
+
 	printf("std: (%c) '%s'\n", 'h', strchr(s1, 'h'));
 	printf("std: (%c) '%s'\n", 'o', strchr(s1, 'o'));
 	printf("std: (%c) '%s'\n", 'x', strchr(s1, 'x'));
-	printf("std: (%c) '%s'\n", '\0', strchr(s1, '\0'));
+	printf("std: (%d) %p == %p\n\n", 0, s1 + 11, strchr(s1, 0));
 
 	printf("ft_: (%c) '%s'\n", 'h', ft_strchr(s1, 'h'));
 	printf("ft_: (%c) '%s'\n", 'o', ft_strchr(s1, 'o'));
 	printf("ft_: (%c) '%s'\n", 'x', ft_strchr(s1, 'x'));
-	printf("ft_: (%c) '%s'\n", '\0', ft_strchr(s1, '\0'));
+	printf("ft_: (%d) %p == %p\n", 0, s1 + 11, strchr(s1, 0));
 #endif
 
 #ifdef STRRCHR
