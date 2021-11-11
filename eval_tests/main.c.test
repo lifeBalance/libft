@@ -448,19 +448,20 @@ int	main(void)
 	printf("ft_: (%d) %p == %p\n", 0, s1 + 11, strchr(s1, 0));
 #endif
 
-#ifdef STRRCHR
-	char s1[] = "hello world";
-	printf("std: '%s'\n", strrchr(s1, 'o'));
-	printf("std: '%s'\n", strrchr(s1, '\0'));
-	printf("std: '%s'\n", strrchr(s1, 'x'));
-	printf("std: '%s'\n", strrchr(s1, 'h'));
-	printf("std: '%s'\n\n", strrchr(s1, 'd'));
+#ifdef FT_STRRCHR
+	char s1[] = "hello world";	// len == 11 chars + null (null at index 11).
 
-	printf("ft_: '%s'\n", ft_strrchr(s1, 'o'));
-	printf("ft_: '%s'\n", ft_strrchr(s1, '\0'));
-	printf("ft_: '%s'\n", ft_strrchr(s1, 'x'));
-	printf("ft_: '%s'\n", ft_strrchr(s1, 'h'));
-	printf("ft_: '%s'\n", ft_strrchr(s1, 'd'));
+	printf("std: (%c) '%s'\n", 'h', strchr(s1, 'h'));
+	printf("std: (%c) '%s'\n", 'o', strchr(s1, 'o'));
+	printf("std: (%c) '%s'\n", 'x', strchr(s1, 'x'));
+	printf("std: (%c) '%s'\n", 'd', strchr(s1, 'd'));
+	printf("std: (%d) %p == %p\n\n", 0, s1 + 11, strchr(s1, 0));
+
+	printf("ft_: (%c) '%s'\n", 'h', ft_strchr(s1, 'h'));
+	printf("ft_: (%c) '%s'\n", 'o', ft_strchr(s1, 'o'));
+	printf("ft_: (%c) '%s'\n", 'x', ft_strchr(s1, 'x'));
+	printf("ft_: (%c) '%s'\n", 'd', ft_strchr(s1, 'd'));
+	printf("ft_: (%d) %p == %p\n", 0, s1 + 11, strchr(s1, 0));
 #endif
 
 #ifdef STRSTR
