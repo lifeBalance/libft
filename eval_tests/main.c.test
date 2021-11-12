@@ -526,21 +526,36 @@ int	main(void)
 	printf("ft_: '%s'\n", ptr);
 #endif
 
-#ifdef STRCMP
+#ifdef FT_STRCMP
 	printf("* * * ft_strcmp * * *\n");
-	char *a = "abc\0";
-	char *b = "abc\200";
-	char n[5];	/* null */
-	char empty[] = "\0";
+	char	greater[4] = "abc\200";
+	char	smaller[4] = "abc\0";
+	char	empty[1] = "\0";
+	int		ret;
 
-	printf("std: '%s' to '%s': %d\n", a, b, strcmp(a, b));
-	printf("ft_: '%s' to '%s': %d\n\n", a, b, ft_strcmp(a, b));
+	puts("TEST #1: Compare greater to smaller string:");
+	ret = strcmp(greater, smaller);
+	printf("std: '%s' to '%s': %d\n", greater, smaller, ret);
+	ret = ft_strcmp(greater, smaller);
+	printf("ft_: '%s' to '%s': %d\n\n", greater, smaller, ret);
 
-	printf("std: '%s' to '%s': %d\n", b, a, strcmp(b, a));
-	printf("ft_: '%s' to '%s': %d\n\n", b, a, ft_strcmp(b, a));
+	puts("TEST #2: Compare smaller to greater string:");
+	ret = strcmp(smaller, greater);
+	printf("std: '%s' to '%s': %d\n", smaller, greater, ret);
+	ret = ft_strcmp(smaller, greater);
+	printf("ft_: '%s' to '%s': %d\n\n", smaller, greater, ret);
 
-	printf("std: '%s' to '%s': %d\n", n, empty, strcmp(n, empty));
-	printf("ft_: '%s' to '%s': %d\n", n, empty, ft_strcmp(n, empty));
+	puts("TEST #3: Compare string to empty string:");
+	ret = strcmp(greater, empty);
+	printf("std: '%s' to '%s': %d\n", greater, empty, ret);
+	ret = ft_strcmp(greater, empty);
+	printf("ft_: '%s' to '%s': %d\n\n", greater, empty, ret);
+
+	puts("TEST #4: Compare empty string to empty string:");
+	ret = strcmp(empty, empty);
+	printf("std: '%s' to '%s': %d\n", empty, empty, ret);
+	ret = ft_strcmp(empty, empty);
+	printf("ft_: '%s' to '%s': %d\n\n", empty, empty, ret);
 #endif
 
 #ifdef STRNCMP
