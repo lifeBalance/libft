@@ -496,24 +496,34 @@ int	main(void)
 	printf("ft_: '%s'\n", ptr);
 #endif
 
-#ifdef STRNSTR
+#ifdef FT_STRNSTR
 	printf("* * * ft_strnstr * * *\n");
 	char *ptr;
 
-	ptr = ft_strnstr("Foo Bar Baz", "Bar", 2);
-	printf("'%s'\n", ptr);
+	ptr = strnstr("Foo Bar Baz", "Bar", 7);
+	printf("std: '%s'\n", ptr);
+	ptr = ft_strnstr("Foo Bar Baz", "Bar", 7);
+	printf("ft_: '%s'\n\n", ptr);
 
-	ptr = ft_strnstr("Baz", "Foo Bar Baz", 11);
-	printf("'%s'\n", ptr);
+	ptr = strnstr("Baz", "Baz", 3);
+	printf("std: '%s'\n", ptr);
+	ptr = ft_strnstr("Baz", "Baz", 3);
+	printf("ft_: '%s'\n\n", ptr);
 
+	ptr = strnstr("Foo Bar Baz", "", 3);
+	printf("std: '%s'\n", ptr);
 	ptr = ft_strnstr("Foo Bar Baz", "", 3);
-	printf("'%s'\n", ptr);
+	printf("ft_: '%s'\n\n", ptr);
 
-	ptr = ft_strnstr("aaab.", "aab", 3);
-	printf("'%s'\n", ptr);
+	ptr = strnstr("aaab.", "aab", 4);
+	printf("std: '%s'\n", ptr);
+	ptr = ft_strnstr("aaab.", "aab", 4);
+	printf("ft_: '%s'\n\n", ptr);
 
-	ptr = ft_strnstr("Foo", "Foo", 3);
-	printf("'%s'\n", ptr);
+	ptr = strnstr("", "Foo", 3);
+	printf("std: '%s'\n", ptr);
+	ptr = ft_strnstr("", "Foo", 3);
+	printf("ft_: '%s'\n", ptr);
 #endif
 
 #ifdef STRCMP
