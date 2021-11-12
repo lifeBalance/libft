@@ -382,29 +382,29 @@ int	main(void)
 #ifdef FT_STRLCAT
 	printf("* * * ft_strlcat * * *\n");
 	int ret;
-	char s1[9] = "01234\0**\0";
-	char s2[9] = "01234\0**\0";
+	char s1[9] = "01234\0***";
+	char s2[9] = "01234\0***";
 
 	// Return value >= dstsize; indicates that the src has been truncated.
-	puts("TEST #1: Return value > dstsize");
+	puts("TEST #1: Return value > dstsize (9)");
 	ret = strlcat(s1, "ABCDE", 9);
 	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
 	ret = ft_strlcat(s2, "ABCDE", 9);
 	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
 
 	// Restore strings to original form.
-	memcpy(s1, "01234\0**\0", 9);
-	memcpy(s2, "01234\0**\0", 9);
+	memcpy(s1, "01234\0***", 9);
+	memcpy(s2, "01234\0***", 9);
 
 	// Return value == dstsize; result shouldn't be null-terminated.
-	puts("TEST #2: Return value == dstsize");
+	puts("TEST #2: Return value == dstsize (9)");
 	ret = strlcat(s1, "ABCD", 9);
 	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
 	ret = ft_strlcat(s2, "ABCD", 9);
 	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
 
-	memcpy(s1, "01234\0**\0", 9);
-	memcpy(s2, "01234\0**\0", 9);
+	memcpy(s1, "01234\0***", 9);
+	memcpy(s2, "01234\0***", 9);
 
 	// Wrong dstsize (Original throws a warning; ft_strlcat doesn't null-end!
 	puts("TEST #3: Wrong dstsize");
@@ -413,25 +413,27 @@ int	main(void)
 	ret = ft_strlcat(s2, "ABCDE", 10);
 	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
 
-	memcpy(s1, "01234\0**\0", 9);
-	memcpy(s2, "01234\0**\0", 9);
+	memcpy(s1, "01234\0***", 9);
+	memcpy(s2, "01234\0***", 9);
 
 	// Return value < dstsize; indicates that the src has fully concatenated.
-	puts("TEST #4: Return value < dstsize");
+	puts("TEST #4: Return value < dstsize (9)");
 	ret = strlcat(s1, "ABC", 9);
 	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
 	ret = ft_strlcat(s2, "ABC", 9);
 	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
 
-	memcpy(s1, "01234\0**\0", 9);
-	memcpy(s2, "01234\0**\0", 9);
+	memcpy(s1, "01234\0***", 9);
+	memcpy(s2, "01234\0***", 9);
 
 	// Return value < dstsize; indicates that the src has fully concatenated.
-	puts("TEST #5: Return value < dstsize");
+	puts("TEST #5: Return value < dstsize (9)");
 	ret = strlcat(s1, "A", 9);
-	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[7] == '\0');
+	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[6] == '\0');
+	printf("Peek after end: %c|%c|%c|%c|\n", s1[5], s1[6], s1[7], s1[8]);
 	ret = ft_strlcat(s2, "A", 9);
-	printf("ft_: '%s' (ret: %d) null-ended? %d\n", s2, ret, s2[7] == '\0');
+	printf("ft_: '%s' (ret: %d) null-ended? %d\n", s2, ret, s2[6] == '\0');
+	printf("Peek after end: %c|%c|%c|%c|\n", s2[5], s2[6], s2[7], s2[8]);
 #endif
 
 #ifdef FT_STRCHR
