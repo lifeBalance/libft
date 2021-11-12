@@ -855,13 +855,10 @@ int	main(void)
 
 #ifdef FT_PUTENDL_FD
 	printf("* * * ft_putendl_fd * * *\n");
-	char *s1 = NULL;
-	char *s2; /* wild pointer: undefined behaviour */
+	// According to the C standard, dereferencint NULL is undefined.
 
 	ft_putendl("'hello world'");
-	ft_putendl(s1);
-	ft_putendl("*");
-	ft_putendl(s2);
+	ft_putendl("");
 #endif
 
 #ifdef FT_PUTNBR_FD
