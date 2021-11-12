@@ -33,12 +33,6 @@ static void ft_print_arr_str(char **a) {
 }
 #endif
 
-#if defined(FT_STRNCPY)
-static int ft_is_null_ended(char *s) {
-	return (*s == '\0');
-}
-#endif
-
 /**********************
 ** MAIN STARTS HERE! **
 ***********************/
@@ -291,29 +285,22 @@ int	main(void)
 
 #ifdef FT_STRNCPY
 	printf("* * * ft_strncpy * * *\n");
-	char s1[] = "hello";
-	char s2[] = "hello";
-	char *p1;
-	char *p2;
+	char s1[6] = "hello\0";
+	char s2[6] = "hello\0";
 
-	// length of source (3) is greater than 'n' (1); result is not null-ended.
-	p1 = strncpy(s1, "cho", 1); // used to paste some chars at beginning.
-	printf("std: '%s' ret: '%s' null-ended? %d\n",
-	s1, p1, ft_is_null_ended(s1 + 1));
-	p2 = ft_strncpy(s2, "cho", 1);
-	printf("ft_: '%s' ret: '%s' null-ended? %d\n\n",
-	s2, p2, ft_is_null_ended(s2 + 1));
+	puts("TEST #1: Length of source (3) is greater than 'n' (1)");
+	// Result is, obviously not null-ended. This way of using the fn
+	// allows us to paste some chars at the beginning of an existing string.
+	printf("std: '%s' ret: '%s'\n", s1, strncpy(s1, "cho", 1));
+	printf("ft_: '%s' ret: '%s'\n\n", s2, ft_strncpy(s2, "cho", 1));
 
 	strcpy(s1, "hello");
 	strcpy(s2, "hello");
 
-	// length of source (2) is less than 'n' (4); result is null-ended.
-	p1 = strncpy(s1, "yo", 4); // used to smeeeesh
-	printf("std: '%s' ret: '%s' null-ended? %d\n",
-	s1, p1, ft_is_null_ended(s1 + 2));
-	p2 = ft_strncpy(s2, "yo", 4);
-	printf("ft_: '%s' ret: '%s' null-ended? %d\n",
-	s2, p2, ft_is_null_ended(s2 + 2));
+	puts("TEST #1: Length of source (2) is less than 'n' (4)");
+	// The resulting string is null-ended; used to smeeesh!
+	printf("std: '%s' ret: '%s'\n", s1, strncpy(s1, "yo", 4));
+	printf("ft_: '%s' ret: '%s'\n", s2, ft_strncpy(s2, "yo", 4));
 #endif
 
 #ifdef FT_STRCAT

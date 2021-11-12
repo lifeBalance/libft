@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:26:52 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/10 23:00:59 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/12 21:50:54 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	size_t	src_len;
-
-	src_len = ft_strlen(src);
-	if (src_len < len)
+	if (ft_strlen(src) < len)
 	{
 		ft_strcpy(dst, src);
-		ft_bzero(dst + src_len + 1, len - src_len);
+		ft_bzero(dst + ft_strlen(src), len - ft_strlen(src));
 	}
 	else
 		ft_memcpy(dst, src, len);
