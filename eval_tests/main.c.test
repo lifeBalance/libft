@@ -466,24 +466,34 @@ int	main(void)
 	printf("ft_: (%d) %p == %p\n", 0, s1 + 11, strchr(s1, 0));
 #endif
 
-#ifdef STRSTR
+#ifdef FT_STRSTR
 	printf("* * * ft_strstr * * *\n");
 	char *ptr;
 
+	ptr = strstr("Foo Bar Baz", "Bar");
+	printf("std: '%s'\n", ptr);
 	ptr = ft_strstr("Foo Bar Baz", "Bar");
-	printf("'%s'\n", ptr);
+	printf("ft_: '%s'\n\n", ptr);
 
+	ptr = strstr("Baz", "Foo Bar Baz");
+	printf("std: '%s'\n", ptr);
 	ptr = ft_strstr("Baz", "Foo Bar Baz");
-	printf("'%s'\n", ptr);
+	printf("ft_: '%s'\n\n", ptr);
 
+	ptr = strstr("Foo Bar Baz", "");
+	printf("std: '%s'\n", ptr);
 	ptr = ft_strstr("Foo Bar Baz", "");
-	printf("'%s'\n", ptr);
+	printf("ft_: '%s'\n\n", ptr);
 
+	ptr = strstr("aaab.", "aab");
+	printf("std: '%s'\n", ptr);
 	ptr = ft_strstr("aaab.", "aab");
-	printf("'%s'\n", ptr);
+	printf("ft_: '%s'\n\n", ptr);
 
+	ptr = strstr("", "Foo");
+	printf("std: '%s'\n", ptr);
 	ptr = ft_strstr("", "Foo");
-	printf("'%s'\n", ptr);
+	printf("ft_: '%s'\n", ptr);
 #endif
 
 #ifdef STRNSTR
