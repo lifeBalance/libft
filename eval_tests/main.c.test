@@ -193,27 +193,34 @@ int	main(void)
 
 #ifdef FT_MEMCMP
 	printf("* * * ft_memcmp * * *\n");
-	char *s1 = "\2001234";
-	int		ret1;
-	int		ret2;
+	char	greater[4] = "abc\200";
+	char	smaller[4] = "abc\0";
+	char	empty[1] = "\0";
+	int		ret;
 
-	// comparing 2 equal strings
-	ret1 = ft_memcmp(s1, s1, strlen(s1));
-	printf("std: '%s' == '%s'? %d\n",   s1, s1, ret1);
-	ret2 = ft_memcmp(s1, s1, strlen(s1));
-	printf("ft_: '%s' == '%s'? %d\n\n", s1, s1, ret2);
+	puts("TEST #1: Compare greater to smaller string (positive):");
+	ret = memcmp(greater, smaller, 4);
+	printf("std: '%s' to '%s': %d\n", greater, smaller, ret);
+	ret = ft_memcmp(greater, smaller, 4);
+	printf("ft_: '%s' to '%s': %d\n\n", greater, smaller, ret);
 
-	// 1st string is greater (\200 is be greater than \0) positive result
-	ret1 = ft_memcmp(s1, "\0", strlen(s1));
-	printf("std: '%s' == '%s'? %d\n",   s1, "\0", ret1);
-	ret2 = ft_memcmp(s1, "\0", strlen(s1));
-	printf("ft_: '%s' == '%s'? %d\n\n", s1, "\0", ret2);
+	puts("TEST #2: Compare smaller to greater string (negative):");
+	ret = memcmp(smaller, greater, 4);
+	printf("std: '%s' to '%s': %d\n", smaller, greater, ret);
+	ret = ft_memcmp(smaller, greater, 4);
+	printf("ft_: '%s' to '%s': %d\n\n", smaller, greater, ret);
 
-	// 2nd string is greater, so negative result
-	ret1 = ft_memcmp("abc", "bbc", strlen("abc"));
-	printf("std: '%s' == '%s'? %d\n", "abc", "bbc", ret1);
-	ret2 = ft_memcmp("abc", "bbc", strlen("abc"));
-	printf("ft_: '%s' == '%s'? %d\n", "abc", "bbc", ret2);
+	puts("TEST #3: Compare string to empty string (positive):");
+	ret = memcmp(greater, empty, 1);
+	printf("std: '%s' to '%s': %d\n", greater, empty, ret);
+	ret = ft_memcmp(greater, empty, 1);
+	printf("ft_: '%s' to '%s': %d\n\n", greater, empty, ret);
+
+	puts("TEST #4: Compare empty string to empty string (zero):");
+	ret = memcmp(empty, empty, 1);
+	printf("std: '%s' to '%s': %d\n", empty, empty, ret);
+	ret = ft_memcmp(empty, empty, 1);
+	printf("ft_: '%s' to '%s': %d\n", empty, empty, ret);
 #endif
 
 #ifdef FT_STRLEN
