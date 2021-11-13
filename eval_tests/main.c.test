@@ -992,6 +992,25 @@ int	main(void)
 														test->next);
 	free(test);
 #endif
+
+#ifdef FT_LSTADD
+	printf("* * * ft_lstadd * * *\n");
+	t_list	*head = ft_lstnew("first node", ft_strlen("hello world"));
+	printf("content: %s, size: %ld, next: %p\n",	head->content,
+													head->content_size,
+													head->next);
+	ft_lstadd(&head, ft_lstnew("added node", ft_strlen("added node")));
+	printf("content: %s, size: %ld, next: %p\n",	head->content,
+													head->content_size,
+													head->next);
+	ft_lstadd(&head, ft_lstnew("newest", ft_strlen("newest")));
+	printf("content: %s, size: %ld, next: %p\n",	head->content,
+													head->content_size,
+													head->next);
+	free(head->next->next);
+	free(head->next);
+	free(head);
+#endif
 	return (0);
 }
 
