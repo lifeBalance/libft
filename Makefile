@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/12 13:48:23 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/13 20:59:32 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,9 @@ SRCS	=	ft_memset.c		\
 			ft_putchar_fd.c	\
 			ft_putstr_fd.c	\
 			ft_putendl_fd.c	\
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c	\
+\
+			ft_lstnew.c
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -78,14 +80,14 @@ HDRS	=	libft.h
 all:	$(NAME)
 
 $(NAME):	$(SRCS) $(HDRS)
-	gcc $(FLAGS) $(SRCS) -I $(HDRS) -c
-	ar rcs $(NAME) $(OBJS)
+	@gcc $(FLAGS) $(SRCS) -I $(HDRS) -c
+	@ar rcs $(NAME) $(OBJS)
 
 clean:
-	/bin/rm -f $(OBJS)
+	@/bin/rm -f $(OBJS)
 
 fclean:	clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re:	fclean all
 
@@ -93,5 +95,5 @@ re:	fclean all
 # a (gitignored) symlink to './eval_tests/main.c.test'. Rule use example:
 # 	$ make test f=FT_PUTCHAR
 test:	main.c $(HDRS) $(SRCS)
-	gcc $(FLAGS) -L. -lft main.c -D$(fn) -o test
-	./test
+	@gcc $(FLAGS) -L. -lft main.c -D$(fn) -o test
+	@./test
