@@ -375,59 +375,138 @@ int	main(void)
 
 #ifdef FT_STRLCAT
 	printf("* * * ft_strlcat * * *\n");
-	int ret;
-	char s1[9] = "01234\0***";
-	char s2[9] = "01234\0***";
+	puts("TEST SUITE #1:");
+	char	buf1[10];
+	char	buf2[10];
+	int		ret;
+	// STRLCAT
+	bzero(buf1, 10);
+	strcpy(buf1, "abc"); // space for 9 characters.
 
-	// Return value >= dstsize; indicates that the src has been truncated.
-	puts("TEST #1: Return value > dstsize (9)");
-	ret = strlcat(s1, "ABCDE", 9);
-	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
-	ret = ft_strlcat(s2, "ABCDE", 9);
-	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
+	ret = strlcat(buf1, "abcdefghijklmnop", 10);
+	printf("std: ret == 19? %d (%d) '%s'\n", ret == 19, ret, buf1);
 
-	// Restore strings to original form.
-	memcpy(s1, "01234\0***", 9);
-	memcpy(s2, "01234\0***", 9);
+	ret = memcmp(buf1, "abcabcdef\0", 10) == 0;
+	printf("std: buf1 == 'abcabcdef'? %d '%s'\n", ret, buf1);
 
-	// Return value == dstsize; result shouldn't be null-terminated.
-	puts("TEST #2: Return value == dstsize (9)");
-	ret = strlcat(s1, "ABCD", 9);
-	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
-	ret = ft_strlcat(s2, "ABCD", 9);
-	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
+	ret = strlcat(buf1, "abcd", 2);
+	printf("std: ret == 6? %d (%d) '%s'\n", ret == 6, ret, buf2);
 
-	memcpy(s1, "01234\0***", 9);
-	memcpy(s2, "01234\0***", 9);
+	// FT_STRLCAT
+	bzero(buf2, 10);
+	strcpy(buf2, "abc"); // space for 9 characters.
 
-	// Wrong dstsize (Original throws a warning; ft_strlcat doesn't null-end!
-	puts("TEST #3: Wrong dstsize");
-	//ret = strlcat(s1, "ABCDE", 10);
-	//printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
-	ret = ft_strlcat(s2, "ABCDE", 10);
-	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
+	ret = ft_strlcat(buf2, "abcdefghijklmnop", 10);
+	printf("\nft_: ret == 19? %d (%d) '%s'\n", ret == 19, ret, buf2);
 
-	memcpy(s1, "01234\0***", 9);
-	memcpy(s2, "01234\0***", 9);
+	ret = memcmp(buf2, "abcabcdef\0", 10) == 0;
+	printf("ft_: buf2 == 'abcabcdef'? %d '%s'\n", ret, buf2);
 
-	// Return value < dstsize; indicates that the src has fully concatenated.
-	puts("TEST #4: Return value < dstsize (9)");
-	ret = strlcat(s1, "ABC", 9);
-	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[8] == '\0');
-	ret = ft_strlcat(s2, "ABC", 9);
-	printf("ft_: '%s' (ret: %d) null-ended? %d\n\n", s2, ret, s2[8] == '\0');
+	ret = ft_strlcat(buf2, "abcd", 2);
+	printf("ft_: ret == 6? %d (%d) '%s'\n", ret == 6, ret, buf2);
 
-	memcpy(s1, "01234\0***", 9);
-	memcpy(s2, "01234\0***", 9);
+	/* TEST SUITE #2 */
+	puts("\nTEST SUITE #2:");
 
-	// Return value < dstsize; indicates that the src has fully concatenated.
-	puts("TEST #5: Return value < dstsize (9)");
-	ret = strlcat(s1, "A", 9);
-	printf("std: '%s' (ret: %d) null-ended? %d\n", s1, ret, s1[6] == '\0');
-	printf("Peek after end: %c|%c|%c|%c|\n", s1[5], s1[6], s1[7], s1[8]);
-	ret = ft_strlcat(s2, "A", 9);
-	printf("ft_: '%s' (ret: %d) null-ended? %d\n", s2, ret, s2[6] == '\0');
-	printf("Peek after end: %c|%c|%c|%c|\n", s2[5], s2[6], s2[7], s2[8]);
+	// STRLCAT
+	bzero(buf1, 10);
+	ret = strlcat(buf1, "abc", 10);
+	printf("std: ret == 3? %d (%d) '%s'\n", ret == 3, ret, buf1);
+
+	ret = strlcat(buf1, "def", 10);
+	printf("std: ret == 6? %d (%d) '%s'\n", ret == 6, ret, buf1);
+
+	// FT_STRLCAT
+	bzero(buf2, 10);
+
+	ret = strlcat(buf2, "abc", 10);
+	printf("\nft_: ret == 3? %d (%d) '%s'\n", ret == 3, ret, buf2);
+
+	ret = strlcat(buf2, "def", 10);
+	printf("ft_: ret == 6? %d (%d) '%s'\n", ret == 6, ret, buf2);
+
+	/* TEST SUITE #3 */
+	puts("\nTEST SUITE #3: dstlen == dstsize (dst is not null-ended).");
+
+	// STRLCAT
+	memset(buf1, 'a', 10);
+	ret = strlcat(buf1, "ccc", 10);
+	printf("std: ret == 13? %d (%d) '%s'\n", ret == 13, ret, buf1);
+
+	// FT_STRLCAT
+	memset(buf2, 'b', 10);
+	ret = ft_strlcat(buf2, "ccc", 10);
+	printf("ft_: ret == 13? %d (%d) '%s'\n", ret == 13, ret, buf2);
+
+	/* TEST SUITE #4 */
+	puts("\nTEST SUITE #4: ");
+
+	// STRLCAT
+	char *b1 = strdup("abc\0\0\0");
+	ret = strlcat(b1, "ccc", 0);
+	printf("std: ret == 3? %d (%d) '%s'\n", ret == 3, ret, b1);
+
+	// FT_STRLCAT
+	char *b2 = strdup("abc\0\0\0");
+	ret = ft_strlcat(b2, "ccc", 0);
+	printf("ft_: ret == 3? %d (%d) '%s'\n", ret == 3, ret, b2);
+
+	/* TEST SUITE #5 */
+	puts("\nTEST SUITE #5: ");
+
+	// STRLCAT
+	b1 = strdup("abc\0\0\0");
+	ret = strlcat(b1, "ccc", 1);
+	printf("std: ret == 4? %d (%d) '%s'\n", ret == 4, ret, b1);
+
+	// FT_STRLCAT
+	b2 = strdup("abc\0\0\0");
+	ret = ft_strlcat(b2, "ccc", 1);
+	printf("ft_: ret == 4? %d (%d) '%s'\n", ret == 4, ret, b2);
+
+	/* TEST SUITE #6 */
+	puts("\nTEST SUITE #6: dst == dsize (dst IS null-ended)");
+
+	// STRLCAT
+	b1 = strdup("abc\0\0\0");
+	ret = strlcat(b1, "ccc", 6);
+	printf("std: ret == 6? %d (%d) '%s'\n", ret == 6, ret, b1);
+
+	// FT_STRLCAT
+	b2 = strdup("abc\0\0\0");
+	ret = ft_strlcat(b2, "ccc", 6);
+	printf("ft_: ret == 6? %d (%d) '%s'\n", ret == 6, ret, b2);
+
+	/* TEST SUITE #7 */
+	puts("\nTEST SUITE #7: dst == dsize (dst IS null-ended)");
+
+	// STRLCAT
+	b1 = strdup("abc\0\0\0");
+	ret = strlcat(b1, "ccc", 10);
+	printf("std: ret == 6? %d (%d) '%s'\n", ret == 6, ret, b1);
+
+	// FT_STRLCAT
+	b2 = strdup("abc\0\0\0");
+	ret = ft_strlcat(b2, "ccc", 10);
+	printf("ft_: ret == 6? %d (%d) '%s'\n", ret == 6, ret, b2);
+
+	/* TEST SUITE #69 */
+	puts("\nTEST SUITE #69: Size of dest == Length of dest");
+	// STRLCAT
+	bzero(buf1, 10);
+	strcpy(buf1, "01234");
+	ret = strlcat(buf1, "56789", 10);
+	printf("std: ret == 10? %d (%d) '%s'\n", ret == 10, ret, buf1);
+	ret = memcmp(buf1, "012345678\0", 10) == 0;
+	printf("std: buf1 == '012345678'? %d '%s'\n", ret, buf1);
+
+	// FT_STRLCAT
+	bzero(buf2, 10);
+	strcpy(buf2, "01234");
+	ret = ft_strlcat(buf2, "56789", 10);
+	printf("\nft_: ret == 10? %d (%d) '%s'\n", ret == 10, ret, buf2);
+	ret = memcmp(buf2, "012345678\0", 10) == 0;
+	printf("ft_: buf2 == '012345678'? %d '%s'\n", ret, buf2);
 #endif
 
 #ifdef FT_STRCHR
@@ -552,12 +631,35 @@ int	main(void)
 	printf("ft_: '%s' to '%s': %d\n\n", empty, empty, ret);
 #endif
 
-#ifdef STRNCMP
-	char *a = "abc\0";
-	char *b = "abc\200";
+#ifdef FT_STRNCMP
+	char	*a = "abc\0";
+	char	*b = "abc\200";
+	int		ret;
+
 	printf("* * * ft_strncmp * * *\n");
-	printf("strncmp %s to %s: %d\n", a, b, ft_strncmp(a, b, 4));
-	printf("strncmp %s to %s: %d\n", b, a, ft_strncmp(b, a, 4));
+	puts("TEST #1: comparing all characters of different strings.");
+	ret = strncmp(a, b, 4);
+	printf("std: '%s' to '%s'(%d): %d\n", a, b, 4, ret);
+	ret = ft_strncmp(a, b, 4);
+	printf("ft_: '%s' to '%s' (%d): %d\n", a, b, 4, ret);
+
+	puts("\nTEST #2: comparing just 2 characters of different strings.");
+	ret = strncmp("abcde", "abdef", 2);
+	printf("std: '%s' to '%s' (%d): %d\n", "abcde", "abdef", 2, ret);
+	ret = ft_strncmp("abcde", "abdef", 2);
+	printf("ft_: '%s' to '%s' (%d): %d\n", "abcde", "abdef", 2, ret);
+
+	puts("\nTEST #3: comparing one-character identical strings.");
+	ret = strncmp("a", "a", 2);
+	printf("std: '%s' to '%s' (%d): %d\n", "a", "a", 2, ret);
+	ret = ft_strncmp("a", "a", 2);
+	printf("ft_: '%s' to '%s' (%d): %d\n", "a", "a", 2, ret);
+
+	puts("\nTEST #4: comparing one-character different strings.");
+	ret = strncmp("a", "q", 2);
+	printf("std: '%s' to '%s' (%d): %d\n", "a", "q", 2, ret);
+	ret = ft_strncmp("a", "q", 2);
+	printf("ft_: '%s' to '%s' (%d): %d\n", "a", "q", 2, ret);
 #endif
 
 #ifdef ISALPHA
@@ -734,11 +836,24 @@ int	main(void)
 
 #ifdef FT_STRTRIM
 	printf("* * * ft_strtrim * * *\n");
-	char *s;
+	char *s1;
+	char *s2;
+	char *s3;
 
-	s = ft_strtrim("\t\nhello world \n\t");
-	printf("'%s'\n", s);
-	ft_strdel(&s);
+	puts("TEST #1: Trim string");
+	s1 = ft_strtrim("\t\nhello world \n\t");
+	printf("'%s'\n\n", s1);
+	ft_strdel(&s1);
+
+	puts("TEST #2: Trim string with embedded whitespace.");
+	s2 = ft_strtrim("\t\n  \tAAA \t BBB\t\n  \t");
+	printf("'%s' Must be 1: %d\n\n", s2, strcmp(s2, "AAA \t BBB") == 0);
+	ft_strdel(&s2);
+
+	puts("TEST #3: Trim string which collapses to empty.");
+	s3 = ft_strtrim("\t\t\n\t\t   ");
+	printf("'%s' Must be 1: %d\n", s3, strcmp(s3, "") == 0);
+	ft_strdel(&s3);
 #endif
 
 #ifdef FT_STRSPLIT
@@ -800,13 +915,12 @@ int	main(void)
 
 #ifdef FT_PUTSTR
 	printf("* * * ft_putstr * * *\n");
-	char *s1;
-	char *s2 = NULL;
+	char *s = "No need for NULL tests!\n";
 
 	ft_putstr("'hello world'\n");
 	ft_putstr("''\n");
-	ft_putstr(s1);
-	ft_putstr(s2);
+	ft_putstr(s);
+	// ft_putstr(NULL);
 #endif
 
 #ifdef FT_PUTENDL
@@ -844,18 +958,17 @@ int	main(void)
 
 #ifdef FT_PUTSTR_FD
 	printf("* * * ft_putstr_fd * * *\n");
-	char *s1 = NULL;
-	char *s2; /* wild pointer: undefined behaviour */
+	char *s = "No need for NULL tests!";
 
-	ft_putstr_fd("hello world in stderr\n", 2);
-	ft_putstr_fd(s1, 2);
-	ft_putstr_fd("*\n", 2);
-	ft_putstr_fd(s2, 2);
+	ft_putstr_fd("'hello world' to stderr\n", 2);
+	ft_putstr_fd(s, 1);
+	ft_putstr_fd("\n", 1);
+	// ft_putstr(NULL);
 #endif
 
 #ifdef FT_PUTENDL_FD
 	printf("* * * ft_putendl_fd * * *\n");
-	// According to the C standard, dereferencint NULL is undefined.
+	// According to the C standard, dereferencing NULL is undefined.
 
 	ft_putendl("'hello world'");
 	ft_putendl("");
