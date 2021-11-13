@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:38:52 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/12 22:22:12 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/13 11:39:19 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 void	ft_putendl_fd(char const *s, int fd)
 {
-	char	*snl;
-
-	snl = ft_strnew(ft_strlen(s) + 1);
-	ft_strcpy(snl, s);
-	ft_strcat(snl, "\n");
-	ft_putstr_fd(snl, fd);
-	ft_strdel(&snl);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
+/*
+** Check this smarty-pants way:
+**{
+**	char	*snl;
+**
+**	snl = ft_strnew(ft_strlen(s) + 1);
+**	ft_strcpy(snl, s);
+**	ft_strcat(snl, "\n");
+**	ft_putstr_fd(snl, fd);
+**	ft_strdel(&snl);
+**}
+*/
