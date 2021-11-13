@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:47:50 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/08 17:38:09 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/13 11:44:29 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar(char ch)
 {
-	write(1, &ch, 1);
+	ft_putchar_fd(ch, 1);
 }
