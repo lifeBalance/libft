@@ -117,13 +117,13 @@ int	main(void)
 	p1 = memcpy(s1 + 2, "ABCD", 3);
 	printf("std: '%s' ret: '%s' (%p == %p)\n", s1, p1, p1, s1 + 2);
 
-	p2 = memcpy(s2 + 2, "ABCD", 3);
+	p2 = ft_memcpy(s2 + 2, "ABCD", 3);
 	printf("ft_: '%s' ret: '%s' (%p == %p)\n", s2, p2, p2, s2 + 2);
 
 	p1 = memcpy(s1 + 9, "ABCD", 1);
 	printf("std: '%s' ret: '%s' (%p == %p)\n", s1, p1, p1, s1 + 9);
 
-	p2 = memcpy(s2 + 9, "ABCD", 1);
+	p2 = ft_memcpy(s2 + 9, "ABCD", 1);
 	printf("ft_: '%s' ret: '%s' (%p == %p)\n", s2, p2, p2, s2 + 9);
 
 	// NULL checks are not needed. According to the C standard,
@@ -703,13 +703,25 @@ int	main(void)
 	printf("isalpha(' ')? %s\n", ft_isalpha(' ') ? "true" : "false");
 #endif
 
-#ifdef ATOI
+#ifdef FT_ATOI
 	printf("* * * ft_atoi * * *\n");
-	printf("atoi(\"10\"): %d\n", ft_atoi("10"));
-	printf("atoi(\"0\"): %d\n", ft_atoi("0"));
-	printf("atoi(\"-2147483648\"): %d\n", ft_atoi("-2147483648"));
-	printf("atoi(\"2147483648\"): %d\n", ft_atoi("2147483648"));
-	printf("atoi(\"2147483647\"): %d\n", ft_atoi("2147483647"));
+	printf("std: (10): %d\n", atoi("10"));
+	printf("ft_: (10): %d\n\n", ft_atoi("10"));
+
+	printf("std: (0): %d\n", atoi("0"));
+	printf("ft_: (0): %d\n\n", ft_atoi("0"));
+
+	printf("std: (3): %d\n", atoi("3"));
+	printf("ft_: (3): %d\n\n", ft_atoi("3"));
+
+	printf("std: (-2147483648): %d\n", atoi("-2147483648"));
+	printf("ft_: (-2147483648): %d\n\n", ft_atoi("-2147483648"));
+
+	printf("std: (2147483648): %d\n", atoi("2147483648"));
+	printf("ft_: (2147483648): %d\n\n", ft_atoi("2147483648"));
+
+	printf("std: (2147483647): %d\n", atoi("2147483647"));
+	printf("ft_: (2147483647): %d\n", ft_atoi("2147483647"));
 #endif
 
 #ifdef ISDIGIT
