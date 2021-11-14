@@ -34,20 +34,38 @@ static void ft_print_arr_str(char **a) {
 #endif
 
 #if defined(FT_LSTDELONE) || defined(FT_LSTDEL) || defined(FT_LSTITER) \
-|| defined(FT_LSTADD)
+|| defined(FT_LSTADD) || defined(FT_LSTMAP)
 static void ft_delnode(void *content, size_t content_size) {
 	(void)content;
 	(void)content_size;
 }
 #endif
 
-#if defined(FT_LSTITER) || defined(FT_LSTADD)
+#if defined(FT_LSTITER) || defined(FT_LSTADD) || defined(FT_LSTMAP)
 static void	ft_print_lst_nodes(t_list *node) {
-	ft_putendl(node->content);
-	ft_putnbr(node->content_size);
-	ft_putstr("\n\n");
+	printf("size: %2ld - content: %s\n", node->content_size, node->content);
+	if (!(node->next))
+		ft_putchar('\n');
 }
 #endif
+
+#if defined(FT_LSTMAP)
+/* wrapper around 'ft_toupper' to deal with chars */
+static char	touppy(char c) {
+	c = ft_toupper((int)c);
+	return (c);
+}
+
+static t_list	*ft_map_content_toupper(t_list *node) {
+	t_list	*mapped_node;
+	char	*s;
+
+	s = ft_strmap((char *)(node->content), touppy);
+	mapped_node = ft_lstnew(s, node->content_size);
+	return (mapped_node);
+}
+#endif
+
 /**********************
 ** MAIN STARTS HERE! **
 ***********************/
@@ -1056,6 +1074,28 @@ int	main(void)
 	printf("head points to: %p\n", head);
 #endif
 
+#ifdef FT_LSTMAP
+	printf("* * * ft_lstmap * * *\n");
+	t_list	*newlst;
+
+	// create the original list
+	t_list	*lst = ft_lstnew("first node", ft_strlen("hello world"));
+	ft_lstadd(&lst, ft_lstnew("added node", ft_strlen("added node")));
+	ft_lstadd(&lst, ft_lstnew("newest", ft_strlen("newest")));
+	// print it
+	puts("Original list:");
+	ft_lstiter(lst, ft_print_lst_nodes);
+
+	// create the mapped list
+	newlst = ft_lstmap(lst, ft_map_content_toupper);
+	// print it
+	puts("Mapped list:");
+	ft_lstiter(newlst, ft_print_lst_nodes);
+
+	// delete the lists
+	ft_lstdel(&lst, ft_delnode);
+	ft_lstdel(&newlst, ft_delnode);
+#endif
 	return (0);
 }
 
