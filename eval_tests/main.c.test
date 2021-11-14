@@ -882,16 +882,24 @@ int	main(void)
 #endif
 
 #ifdef FT_STRSUB
-	printf("* * * ft_strjoin * * *\n");
-	char *s1 = "123";
+	printf("* * * ft_strsub * * *\n");
+	char *s1 = "hello";
 	char *sub;
 
-	sub = ft_strsub(s1, 1, 1);
-	printf("'%s' (len: %ld)\n", sub, ft_strlen(sub));
-	sub = ft_strsub(s1, 0, 3);
-	printf("'%s' (len: %ld)\n", sub, ft_strlen(sub));
-	sub = ft_strsub(s1, 0, 2);
-	printf("'%s' (len: %ld)\n", sub, ft_strlen(sub));
+	puts("TEST #1: last 2 characters of 'hello'");
+	sub = ft_strsub(s1, 3, 2);
+	printf("'%s' (len: %ld) Last null? %s\n",
+	sub, ft_strlen(sub), (sub[2] == '\0')? "yes":"no");
+
+	puts("\nTEST #2: first 4 characters of 'hello'");
+	sub = ft_strsub(s1, 0, 4);
+	printf("'%s' (len: %ld) Last null? %s\n",
+	sub, ft_strlen(sub), (sub[4] == '\0')? "yes":"no");
+
+	puts("\nTEST #3: all characters of 'hello'");
+	sub = ft_strsub(s1, 0, 5);
+	printf("'%s' (len: %ld) Last null? %s\n",
+	sub, ft_strlen(sub), (sub[5] == '\0')? "yes":"no");
 #endif
 
 #ifdef FT_STRJOIN
