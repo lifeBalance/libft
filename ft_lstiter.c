@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/14 12:29:06 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/14 13:12:02 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	while (lst)
+	if (f)
 	{
-		f(lst);
-		lst = lst->next;
+		while (lst)
+		{
+			f(lst);
+			lst = lst->next;
+		}
 	}
 }
