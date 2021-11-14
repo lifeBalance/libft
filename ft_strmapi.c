@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:59:26 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/07 11:33:00 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/14 20:07:40 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int i, char c))
 	unsigned int	j;
 
 	m = ft_strnew(ft_strlen(s));
+	if (!m)
+		return (NULL);
 	j = 0;
 	while (s[j])
 	{
