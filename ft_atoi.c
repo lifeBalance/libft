@@ -6,13 +6,11 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 13:35:32 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/14 20:18:48 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/14 21:53:38 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-//static	int	ft_isspace(char ch);
 
 int	ft_atoi(const char *str)
 {
@@ -40,11 +38,3 @@ int	ft_atoi(const char *str)
 	}
 	return (n * sign);
 }
-
-//static int	ft_isspace(char ch)
-//{
-//	if (ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || \
-//		ch == '\r' || ch == ' ')
-//		return (1);
-//	return (0);
-//}
