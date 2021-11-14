@@ -51,7 +51,7 @@ static void	ft_print_lst_nodes(t_list *node) {
 
 #if defined(FT_LSTMAP)
 /* wrapper around 'ft_toupper' to deal with chars */
-static char	touppy(char c) {
+static char		touppy(char c) {
 	c = ft_toupper((int)c);
 	return (c);
 }
@@ -969,6 +969,8 @@ int	main(void)
 #ifdef FT_PUTNBR
 	printf("* * * ft_putnbr * * *\n");
 
+	ft_putnbr(3);
+	ft_putchar('\n');
 	ft_putnbr(234);
 	ft_putchar('\n');
 	ft_putnbr(-2147483648);
