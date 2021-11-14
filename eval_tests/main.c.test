@@ -131,7 +131,7 @@ int	main(void)
 	/* 	NULL checks are not needed. According to the C standard,
 		dereferencing 'NULL' results in 'undefined behaviour',
 		BUT, in this case the standard fn does not crash when
-		NULL is received as argument.
+		NULL is received as arguments and size > 0.
 	*/
 	puts("\nTEST #3: ");
 	p1 = memcpy(NULL, NULL, 1);
@@ -177,26 +177,36 @@ int	main(void)
 	char *p1;
 	char *p2;
 
-	// overlapping
-	printf("Overlapping strings:\n");
+	printf("TEST #1: Overlapping strings:\n");
 	p1 = memmove(s1 + 2, s1, 5);
 	printf("std: %s (%p - %p)\n", s1, p1, s1 + 2);
 
-	p2 = memmove(s2 + 2, s2, 5);
+	p2 = ft_memmove(s2 + 2, s2, 5);
 	printf("ft_: %s (%p - %p)\n\n", s2, p2, s2 + 2);
 
 	// Restore string values
 	strcpy(s1, "0123456789");
 	strcpy(s2, "0123456789");
 
-	// non-overlapping
+	printf("\nTEST #2: Non-overlapping strings:\n");
 	p1 = memmove(s1, s1 + 1, 5);
 	printf("std: %s (%p - %p)\n", s1, p1, s1);
 
-	p2 = memmove(s2, s2 + 1, 5);
+	p2 = ft_memmove(s2, s2 + 1, 5);
 	printf("ft_: %s (%p - %p)\n", s2, p2, s2);
 
-	// F..K NULL checks!!!
+	/* 	NULL checks are not needed. According to the C standard,
+		dereferencing 'NULL' results in 'undefined behaviour',
+		BUT, in this case the standard fn does not crash when
+		NULL is received as arguments and size > 0.
+	*/
+	printf("\nTEST #3: Both NULL args and size > 0:\n");
+	p1 = memmove(NULL, NULL, 5);
+	printf("std: %s (%p - %p)\n", NULL, p1, NULL);
+
+	p2 = ft_memmove(NULL, NULL, 5);
+	printf("ft_: %s (%p - %p)\n", NULL, p2, NULL);
+
 #endif
 
 #ifdef FT_MEMCHR
