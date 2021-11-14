@@ -6,13 +6,13 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/13 00:43:38 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/14 20:22:24 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(int c);
+static int	ft_isspacey(int c);
 
 char	*ft_strtrim(char const *s)
 {
@@ -21,10 +21,10 @@ char	*ft_strtrim(char const *s)
 	char	*trimmed;
 
 	first = 0;
-	while (ft_isspace(s[first]))
+	while (ft_isspacey(s[first]))
 		first++;
 	last = ft_strlen(s) - 1;
-	while (ft_isspace(s[last]) && last >= first)
+	while (ft_isspacey(s[last]) && last >= first)
 		last--;
 	trimmed = ft_strsub(s, first, last - first + 1);
 	if (!trimmed)
@@ -32,7 +32,7 @@ char	*ft_strtrim(char const *s)
 	return (trimmed);
 }
 
-static int	ft_isspace(int c)
+static int	ft_isspacey(int c)
 {
 	return (c == ' ' || c == '\n' || c == '\t');
 }
