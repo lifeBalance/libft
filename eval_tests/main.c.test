@@ -33,10 +33,18 @@ static void ft_print_arr_str(char **a) {
 }
 #endif
 
-#if defined(FT_LSTDELONE) || defined(FT_LSTDEL)
+#if defined(FT_LSTDELONE) || defined(FT_LSTDEL) || defined(FT_LSTITER)
 static void ft_delnode(void *content, size_t content_size) {
 	(void)content;
 	(void)content_size;
+}
+#endif
+
+#if defined(FT_LSTITER)
+static void	ft_print_lst_nodes(t_list *node) {
+	ft_putendl(node->content);
+	ft_putnbr(node->content_size);
+	ft_putstr("\n\n");
 }
 #endif
 /**********************
@@ -1045,6 +1053,17 @@ int	main(void)
 	free(head->next);
 	free(head);
 #endif
+
+#ifdef FT_LSTITER
+	printf("* * * ft_lstiter * * *\n");
+	t_list	*head = ft_lstnew("first node", ft_strlen("hello world"));
+	ft_lstadd(&head, ft_lstnew("added node", ft_strlen("added node")));
+	ft_lstadd(&head, ft_lstnew("newest", ft_strlen("newest")));
+	ft_lstiter(head, ft_print_lst_nodes);
+	ft_lstdel(&head, ft_delnode);
+	printf("head points to: %p\n", head);
+#endif
+
 	return (0);
 }
 
