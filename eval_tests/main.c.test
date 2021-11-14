@@ -33,7 +33,7 @@ static void ft_print_arr_str(char **a) {
 }
 #endif
 
-#ifdef FT_LSTDELONE
+#if defined(FT_LSTDELONE) || defined(FT_LSTDEL)
 static void ft_delnode(void *content, size_t content_size) {
 	(void)content;
 	(void)content_size;
@@ -1006,6 +1006,24 @@ int	main(void)
 														head->content_size,
 														head->next);
 	ft_lstdelone(&head, ft_delnode);
+	printf("head now points to %p\n", head);
+#endif
+
+#ifdef FT_LSTDEL
+	printf("* * * ft_lstdel* * *\n");
+	t_list	*temp_head;
+	t_list	*head = ft_lstnew("hello world", ft_strlen("hello world"));
+	ft_lstadd(&head, ft_lstnew("added node", ft_strlen("added node")));
+	ft_lstadd(&head, ft_lstnew("newest node", ft_strlen("newest node")));
+	temp_head = head;
+	while (temp_head)
+	{
+		printf("content: %s, size: %ld, next: %p\n",	head->content,
+														head->content_size,
+														head->next);
+		temp_head = temp_head->next;
+	}
+	ft_lstdel(&head, ft_delnode);
 	printf("head now points to %p\n", head);
 #endif
 

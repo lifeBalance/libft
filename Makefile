@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/13 22:25:32 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/14 11:40:55 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ SRCS	=	ft_memset.c		\
 \
 			ft_lstnew.c		\
 			ft_lstdelone.c	\
+			ft_lstdel.c		\
 			ft_lstadd.c
 
 OBJS	=	$(SRCS:.c=.o)
