@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/07 13:49:33 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/14 23:13:24 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
 
+	if (!s1 || !s2)
+		return (NULL);
 	join = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
 	if (!join)
 		return (NULL);
