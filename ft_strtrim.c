@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/14 20:22:24 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/14 23:15:20 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strtrim(char const *s)
 	size_t	first;
 	char	*trimmed;
 
+	if (!s)
+		return (NULL);
 	first = 0;
 	while (ft_isspacey(s[first]))
 		first++;
