@@ -114,20 +114,31 @@ int	main(void)
 
 	printf("dst: '%s' src: '%s'\n\n", s1, "ABCD");
 
+	puts("TEST #1: ");
 	p1 = memcpy(s1 + 2, "ABCD", 3);
 	printf("std: '%s' ret: '%s' (%p == %p)\n", s1, p1, p1, s1 + 2);
 
 	p2 = ft_memcpy(s2 + 2, "ABCD", 3);
 	printf("ft_: '%s' ret: '%s' (%p == %p)\n", s2, p2, p2, s2 + 2);
 
+	puts("\nTEST #2: ");
 	p1 = memcpy(s1 + 9, "ABCD", 1);
 	printf("std: '%s' ret: '%s' (%p == %p)\n", s1, p1, p1, s1 + 9);
 
 	p2 = ft_memcpy(s2 + 9, "ABCD", 1);
 	printf("ft_: '%s' ret: '%s' (%p == %p)\n", s2, p2, p2, s2 + 9);
 
-	// NULL checks are not needed. According to the C standard,
-	// dereferencing 'NULL' results in 'undefined behaviour'.
+	/* 	NULL checks are not needed. According to the C standard,
+		dereferencing 'NULL' results in 'undefined behaviour',
+		BUT, in this case the standard fn does not crash when
+		NULL is received as argument.
+	*/
+	puts("\nTEST #3: ");
+	p1 = memcpy(NULL, NULL, 1);
+	printf("std: '%s' ret: '%s' (%p == %p)\n", NULL, p1, p1, NULL);
+
+	p2 = ft_memcpy(NULL, NULL, 1);
+	printf("ft_: '%s' ret: '%s' (%p == %p)\n", NULL, p2, p2, NULL);
 #endif
 
 #ifdef FT_MEMCCPY
@@ -137,16 +148,19 @@ int	main(void)
 	char *p1;
 	char *p2;
 
+	puts("TEST #1: ");
 	p1 = memccpy(s1, "ABCDE", 'C', 5);
 	printf("std: '%s' - ret: '%s'\n", s1, p1);
 	p2 = ft_memccpy(s2, "ABCDE", 'C', 5);
 	printf("ft_: '%s' - ret: '%s'\n\n", s2, p2);
 
+	puts("TEST #2: ");
 	p1 = memccpy(s1, "ABCDE", 'A', 5);
 	printf("std: '%s' - ret: '%s'\n", s1, p1);
 	p2 = ft_memccpy(s2, "ABCDE", 'A', 5);
 	printf("ft_: '%s' - ret: '%s'\n\n", s2, p2);
 
+	puts("TEST #3: ");
 	p1 = memccpy(s1 + 5, "ABCDE", 'o', 5);
 	printf("std: '%s' - ret: '%s'\n", s1, p1);
 	p2 = ft_memccpy(s2 + 5, "ABCDE", 'o', 5);
@@ -897,6 +911,11 @@ int	main(void)
 
 	puts("TEST #3: Trim string which collapses to empty.");
 	s3 = ft_strtrim("\t\t\n\t\t   ");
+	printf("'%s' Must be 1: %d\n", s3, strcmp(s3, "") == 0);
+	ft_strdel(&s3);
+
+	puts("\nTEST #4: Trim string which only contains null character.");
+	s3 = ft_strtrim("\t\t\n\0\n\t\t   ");
 	printf("'%s' Must be 1: %d\n", s3, strcmp(s3, "") == 0);
 	ft_strdel(&s3);
 #endif
