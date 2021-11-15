@@ -35,7 +35,7 @@ static void ft_print_arr_str(char **a) {
 
 #if defined(FT_LSTDELONE) || defined(FT_LSTDEL) || defined(FT_LSTITER) \
 || defined(FT_LSTADD) || defined(FT_LSTMAP)
-static void ft_delnode(void *content, size_t content_size) {
+static void ft_del_node_content(void *content, size_t content_size) {
 	(void)content;
 	(void)content_size;
 }
@@ -55,7 +55,7 @@ static char		touppy(char c) {
 	c = ft_toupper((int)c);
 	return (c);
 }
-
+/*
 static t_list	*ft_map_content_toupper(t_list *node) {
 	t_list	*mapped_node;
 	char	*s;
@@ -66,12 +66,21 @@ static t_list	*ft_map_content_toupper(t_list *node) {
 		return (NULL);
 	return (mapped_node);
 }
-/*
-static t_list	*ft_map_content_toupper(t_list *node) {
-	node->content = ft_strmap((char *)(node->content), touppy);
-	return (node);
-}
 */
+static t_list	*ft_map_content_toupper(t_list *node) {
+	char			*s;
+	static t_list	*mapped_lst;
+	t_list			*mapped_node;
+
+	mapped_lst = NULL;
+	if (node->next && !mapped_lst)
+		mapped_lst = node;
+	s = ft_strmap((char *)(node->content), touppy);
+	mapped_node = ft_lstnew(s, node->content_size);
+	if (!mapped_node)
+		ft_lstdel(&mapped_lst, ft_del_node_content);
+	return (mapped_node);
+}
 #endif
 
 /**********************
@@ -1167,29 +1176,30 @@ int	main(void)
 
 #ifdef FT_LSTMAP
 	printf("* * * ft_lstmap * * *\n");
-	t_list	*newlst;
+	t_list	*orig_lst;
+	t_list	*mapped_lst;
 
-	// create the original list
-	t_list	*lst = ft_lstnew("first node", ft_strlen("hello world"));
-	ft_lstadd(&lst, ft_lstnew("added node", ft_strlen("added node")));
-	ft_lstadd(&lst, ft_lstnew("newest", ft_strlen("newest")));
-	// print it
+	// Create the original list
+	orig_lst = ft_lstnew("first node", ft_strlen("hello world"));
+	ft_lstadd(&orig_lst, ft_lstnew("added node", ft_strlen("added node")));
+	ft_lstadd(&orig_lst, ft_lstnew("newest", ft_strlen("newest")));
+	// Print it
 	puts("Original list:");
-	ft_lstiter(lst, ft_print_lst_nodes);
+	ft_lstiter(orig_lst, ft_print_lst_nodes);
 
-	// create the mapped list
-	newlst = ft_lstmap(lst, ft_map_content_toupper);
-	// print it
+	// Create the mapped list
+	mapped_lst = ft_lstmap(orig_lst, ft_map_content_toupper);
+	// Print it
 	puts("Mapped list:");
-	ft_lstiter(newlst, ft_print_lst_nodes);
+	ft_lstiter(mapped_lst, ft_print_lst_nodes);
 
-	// print the original again (to check is ok)
+	// Print the original again (to check it's ok)
 	puts("Original list again:");
-	ft_lstiter(lst, ft_print_lst_nodes);
+	ft_lstiter(orig_lst, ft_print_lst_nodes);
 
 	// delete the lists
-	ft_lstdel(&lst, ft_delnode);
-	ft_lstdel(&newlst, ft_delnode);
+	ft_lstdel(&orig_lst, ft_del_node_content);
+	ft_lstdel(&mapped_lst, ft_del_node_content);
 #endif
 	return (0);
 }

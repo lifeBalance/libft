@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/15 13:39:08 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:21:54 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,17 @@
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*mapped_lst;
-	t_list	*prev;
-	t_list	*temp;
+	t_list	*tmp_node;
 
 	if (!lst || !f)
 		return (NULL);
 	mapped_lst = NULL;
 	while (lst)
 	{
-		temp = f(lst);
-		if (!temp)
+		tmp_node = f(lst);
+		if (!tmp_node)
 			return (NULL);
-		if (!mapped_lst)
-		{
-			mapped_lst = temp;
-			prev = temp;
-		}
-		else
-		{
-			prev->next = temp;
-			prev = prev->next;
-		}
+		ft_lst_push_back(&mapped_lst, tmp_node);
 		lst = lst->next;
 	}
 	return (mapped_lst);
