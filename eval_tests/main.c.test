@@ -729,23 +729,45 @@ int	main(void)
 
 #ifdef FT_ATOI
 	printf("* * * ft_atoi * * *\n");
-	printf("std: (10): %d\n", atoi("10"));
-	printf("ft_: (10): %d\n\n", ft_atoi("10"));
-
-	printf("std: (0): %d\n", atoi("0"));
-	printf("ft_: (0): %d\n\n", ft_atoi("0"));
-
+	puts("TEST #1: Single-digit numbers");
 	printf("std: (3): %d\n", atoi("3"));
-	printf("ft_: (3): %d\n\n", ft_atoi("3"));
+	printf("ft_: (3): %d\n", ft_atoi("3"));
 
+	puts("\nTEST #2: Double-digit numbers");
+	printf("std: (10): %d\n", atoi("10"));
+	printf("ft_: (10): %d\n", ft_atoi("10"));
+
+	puts("\nTEST #3: Zero");
+	printf("std: (0): %d\n", atoi("0"));
+	printf("ft_: (0): %d\n", ft_atoi("0"));
+
+	puts("\nTEST #4: Minimum value within 'int' range.");
 	printf("std: (-2147483648): %d\n", atoi("-2147483648"));
-	printf("ft_: (-2147483648): %d\n\n", ft_atoi("-2147483648"));
+	printf("ft_: (-2147483648): %d\n", ft_atoi("-2147483648"));
 
-	printf("std: (2147483648): %d\n", atoi("2147483648"));
-	printf("ft_: (2147483648): %d\n\n", ft_atoi("2147483648"));
-
+	puts("\nTEST #5: Maximum value within 'int' range.");
 	printf("std: (2147483647): %d\n", atoi("2147483647"));
 	printf("ft_: (2147483647): %d\n", ft_atoi("2147483647"));
+	
+	puts("\nTEST #6: Value over maximum 'int' range.");
+	printf("std: (2147483648): %d\n", atoi("2147483648"));
+	printf("ft_: (2147483648): %d\n", ft_atoi("2147483648"));
+
+	puts("\nTEST #7: Value below minimum 'int' range.");
+	printf("std: (-2147483649): %d\n", atoi("-2147483649"));
+	printf("ft_: (-2147483649): %d\n", ft_atoi("-2147483649"));
+
+	puts("\nTEST #8: Value over maximum 'long' range.");
+	printf("std: (99999999999999999999999999): %d\n",
+		atoi("99999999999999999999999999"));
+	printf("ft_: (99999999999999999999999999): %d\n",
+		ft_atoi("99999999999999999999999999"));
+
+	puts("\nTEST #9: Value below minimum 'long' range.");
+	printf("std: (-99999999999999999999999999): %d\n",
+		atoi("-99999999999999999999999999"));
+	printf("ft_: (-99999999999999999999999999): %d\n",
+		ft_atoi("-99999999999999999999999999"));
 #endif
 
 #ifdef ISDIGIT
