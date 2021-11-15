@@ -62,8 +62,16 @@ static t_list	*ft_map_content_toupper(t_list *node) {
 
 	s = ft_strmap((char *)(node->content), touppy);
 	mapped_node = ft_lstnew(s, node->content_size);
+	if (!mapped_node)
+		return (NULL);
 	return (mapped_node);
 }
+/*
+static t_list	*ft_map_content_toupper(t_list *node) {
+	node->content = ft_strmap((char *)(node->content), touppy);
+	return (node);
+}
+*/
 #endif
 
 /**********************
@@ -1174,6 +1182,10 @@ int	main(void)
 	// print it
 	puts("Mapped list:");
 	ft_lstiter(newlst, ft_print_lst_nodes);
+
+	// print the original again (to check is ok)
+	puts("Original list again:");
+	ft_lstiter(lst, ft_print_lst_nodes);
 
 	// delete the lists
 	ft_lstdel(&lst, ft_delnode);

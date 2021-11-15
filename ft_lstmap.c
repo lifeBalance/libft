@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 14:41:03 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/14 19:22:40 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:39:08 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	while (lst)
 	{
 		temp = f(lst);
+		if (!temp)
+			return (NULL);
 		if (!mapped_lst)
 		{
 			mapped_lst = temp;
