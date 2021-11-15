@@ -932,9 +932,19 @@ int	main(void)
 	printf("'%s' Must be 1: %d\n", s3, strcmp(s3, "") == 0);
 	ft_strdel(&s3);
 
-	puts("\nTEST #4: Trim string which only contains null character.");
-	s3 = ft_strtrim("\t\t\n\0\n\t\t   ");
+	puts("\nTEST #4: Trim string which contains several null characters.");
+	/*	You may think that the string below should produce a substring
+	**	of 6 characters ("\0\0\0abc"), but since the string is parsed
+	**	from left to right, as soon as the first null is reached, that's
+	**	the end of the substring (and the start too!). So the result is
+	**	an EMPTY STRING.
+	*/
+	s3 = ft_strtrim("\t\t\n\0\0\0abc\n\t\t   ");
+	char nulls1[6] = "\0\0\0abc";
+	char nulls2[1] = "\0";
 	printf("'%s' Must be 1: %d\n", s3, strcmp(s3, "") == 0);
+	printf("'%s' Must be 1: %d\n", s3, memcmp(s3, nulls1, 1) == 0);
+	printf("'%s' Must be 0: %d\n", s3, memcmp(s3, nulls2, 6) == 0);
 	ft_strdel(&s3);
 #endif
 
