@@ -6,7 +6,7 @@
 /*   By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 11:09:18 by rodrodri          #+#    #+#             */
-/*   Updated: 2021/11/14 20:20:34 by rodrodri         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:59:54 by rodrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 /*
 ** EXTRA BONUS: Useful imho.
 */
-int	ft_isspace(int ch);
+int		ft_isspace(int ch);
+void	ft_lst_push_back(t_list **lst, t_list *node);
 
 #endif
