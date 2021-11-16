@@ -1039,36 +1039,48 @@ int	main(void)
 
 #ifdef FT_ITOA
 	printf("* * * ft_itoa * * *\n");
-	char *s;
+	char	*s;
+	int		n;
 
-	s = ft_itoa(0);
-	printf("%s\n", s);
+	n = 0;
+	s = ft_itoa(n);
+	printf("TEST #1: %d == %s\n", n, s);
 	ft_strdel(&s);
 
-	s = ft_itoa(201);
-	printf("%s\n", s);
+	n = 3;
+	s = ft_itoa(3);
+	printf("\nTEST #2: %d == %s\n", n, s);
 	ft_strdel(&s);
 
-	s = ft_itoa(-201);
-	printf("%s\n", s);
+	n = 201;
+	s = ft_itoa(n);
+	printf("\nTEST #3: %d == %s\n", n, s);
 	ft_strdel(&s);
 
-	s = ft_itoa(234);
-	printf("%s\n", s);
+	n = -201;
+	s = ft_itoa(n);
+	printf("\nTEST #4: %d == %s\n", n, s);
 	ft_strdel(&s);
 
-	s = ft_itoa(-234);
-	printf("%s\n", s);
+	n = 234;
+	s = ft_itoa(n);
+	printf("\nTEST #5: %d == %s\n", n, s);
 	ft_strdel(&s);
 
-	s = ft_itoa(-2147483648);
-	printf("%s\n", s);
+	n = -234;
+	s = ft_itoa(n);
+	printf("\nTEST #6: %d == %s\n", n, s);
 	ft_strdel(&s);
 
-	s = ft_itoa(2147483647);
-	printf("%s\n", s);
+	n = -2147483648;
+	s = ft_itoa(n);
+	printf("\nTEST #7: %d == %s\n", n, s);
 	ft_strdel(&s);
 
+	n = 2147483647;
+	s = ft_itoa(n);
+	printf("\nTEST #8: %d == %s\n", n, s);
+	ft_strdel(&s);
 #endif
 
 #ifdef FT_PUTCHAR
