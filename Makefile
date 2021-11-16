@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/16 00:00:01 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/16 11:52:24 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 HDRS	=	libft.h
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re .FORCE
 
 all:	$(NAME)
 
@@ -101,7 +101,12 @@ re:	fclean all
 
 # To please Moulinette (who forbids extraneous '*.c' files), './main.c' is
 # a (gitignored) symlink to './eval_tests/main.c.test'. Rule use example:
+#
 # 	$ make test f=FT_PUTCHAR
-test:	main.c $(HDRS) $(SRCS)
+test:	main.c $(HDRS) $(SRCS) .FORCE
+
+# The following target is to 'force' building test,
+# even if main.c hasn't changed.
+.FORCE:
 	@gcc $(FLAGS) -L. -lft main.c -D$(fn) -o test
 	@./test

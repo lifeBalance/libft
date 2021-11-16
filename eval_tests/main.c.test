@@ -34,18 +34,17 @@ static void ft_print_arr_str(char **a) {
 #endif
 
 #if defined(FT_LSTDELONE) || defined(FT_LSTDEL) || defined(FT_LSTITER) \
-|| defined(FT_LSTADD) || defined(FT_LSTMAP)
+|| defined(FT_LSTADD) || defined(FT_LSTMAP) || defined(FT_LSTNEW) \
+||  defined(FT_LSTITER)
 static void ft_del_node_content(void *content, size_t content_size) {
 	(void)content;
 	(void)content_size;
 }
-#endif
 
-#if defined(FT_LSTITER) || defined(FT_LSTADD) || defined(FT_LSTMAP)
-static void	ft_print_lst_nodes(t_list *node) {
+static void	ft_print_node(t_list *node) {
 	printf("size: %2ld - content: %s\n", node->content_size, node->content);
 	if (!(node->next))
-		ft_putchar('\n');
+		ft_putstr("\t[That was the last node]\n\n");
 }
 #endif
 
@@ -69,8 +68,8 @@ static t_list	*ft_map_content_toupper(t_list *node) {
 */
 static t_list	*ft_map_content_toupper(t_list *node) {
 	char			*s;
-	static t_list	*mapped_lst;
 	t_list			*mapped_node;
+	static t_list	*mapped_lst;
 
 	mapped_lst = NULL;
 	if (node->next && !mapped_lst)
@@ -83,11 +82,13 @@ static t_list	*ft_map_content_toupper(t_list *node) {
 }
 #endif
 
-/**********************
-** MAIN STARTS HERE! **
-***********************/
 int	main(void)
 {
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ *			PART 1: LIBC FUNCTIONS		   *
+ *
+ * * * * * * * * * * * * * * * *  * * * * */
 #ifdef FT_MEMSET
 	printf("* * * ft_memset * * *\n");
 	char s1[] = "hello world";
@@ -831,6 +832,11 @@ int	main(void)
 		printf("tolower('%c'): %c\n", ch, ft_tolower(ch));
 #endif
 
+/* * * * * * * * * * * * * * * * * * * * * *
+ *
+ *		PART 2: ADDITIONAL FUNCTIONS	   *
+ *
+ * * * * * * * * * * * * * * * *  * * * * */
 #ifdef FT_MEMALLOCDEL
 	printf("* * * ft_memalloc * * *\n");
 	void *area = NULL;
@@ -1119,58 +1125,64 @@ int	main(void)
  * * * * * * * * * * * * * * * *  * * * * */
 #ifdef FT_LSTNEW
 	printf("* * * ft_lstnew * * *\n");
-	t_list	*test = ft_lstnew("hello world", ft_strlen("hello world"));
-	printf("Node content: %s, size: %ld, next: %p\n",	test->content,
-														test->content_size,
-														test->next);
-	free(test);
+	t_list	*a_node;
+
+	a_node = ft_lstnew("hello world", ft_strlen("hello world"));
+	ft_print_node(a_node);
+
+	ft_lstdelone(&a_node, ft_del_node_content);
+	printf("Node now points to %p\n", a_node);
 #endif
 
 #ifdef FT_LSTDELONE
 	printf("* * * ft_lstdelone * * *\n");
-	t_list	*head = ft_lstnew("hello world", ft_strlen("hello world"));
-	printf("Node content: %s, size: %ld, next: %p\n",	head->content,
-														head->content_size,
-														head->next);
-	ft_lstdelone(&head, ft_delnode);
-	printf("head now points to %p\n", head);
+	t_list	*a_node;
+	a_node = ft_lstnew("hello world", ft_strlen("hello world"));
+	ft_print_node(a_node);
+
+	ft_lstdelone(&a_node, ft_del_node_content);
+	printf("Node now points to %p\n", a_node);
 #endif
 
 #ifdef FT_LSTDEL
 	printf("* * * ft_lstdel* * *\n");
-	t_list	*temp_head;
-	t_list	*head = ft_lstnew("hello world", ft_strlen("hello world"));
+	t_list	*head;
+
+	head = ft_lstnew("hello world", ft_strlen("hello world"));
 	ft_lstadd(&head, ft_lstnew("added node", ft_strlen("added node")));
 	ft_lstadd(&head, ft_lstnew("newest node", ft_strlen("newest node")));
-	temp_head = head;
-	while (temp_head)
-	{
-		printf("content: %s, size: %ld, next: %p\n",	head->content,
-														head->content_size,
-														head->next);
-		temp_head = temp_head->next;
-	}
-	ft_lstdel(&head, ft_delnode);
+
+	ft_lstiter(head, ft_print_node);
+
+	ft_lstdel(&head, ft_del_node_content);
 	printf("head now points to %p\n", head);
 #endif
 
 #ifdef FT_LSTADD
 	printf("* * * ft_lstadd * * *\n");
-	t_list	*head = ft_lstnew("first node", ft_strlen("hello world"));
+	t_list	*head;
+
+	head = ft_lstnew("first node", ft_strlen("hello world"));
 	ft_lstadd(&head, ft_lstnew("added node", ft_strlen("added node")));
 	ft_lstadd(&head, ft_lstnew("newest", ft_strlen("newest")));
-	ft_lstiter(head, ft_print_lst_nodes);
-	ft_lstdel(&head, ft_delnode);
+
+	ft_lstiter(head, ft_print_node);
+
+	ft_lstdel(&head, ft_del_node_content);
 	printf("head now points to %p\n", head);
 #endif
 
 #ifdef FT_LSTITER
 	printf("* * * ft_lstiter * * *\n");
-	t_list	*head = ft_lstnew("first node", ft_strlen("hello world"));
+	t_list	*head;
+
+	head = ft_lstnew("first node", ft_strlen("hello world"));
 	ft_lstadd(&head, ft_lstnew("added node", ft_strlen("added node")));
 	ft_lstadd(&head, ft_lstnew("newest", ft_strlen("newest")));
-	ft_lstiter(head, ft_print_lst_nodes);
-	ft_lstdel(&head, ft_delnode);
+
+	ft_lstiter(head, ft_print_node);
+
+	ft_lstdel(&head, ft_del_node_content);
 	printf("head points to: %p\n", head);
 #endif
 
@@ -1185,17 +1197,17 @@ int	main(void)
 	ft_lstadd(&orig_lst, ft_lstnew("newest", ft_strlen("newest")));
 	// Print it
 	puts("Original list:");
-	ft_lstiter(orig_lst, ft_print_lst_nodes);
+	ft_lstiter(orig_lst, ft_print_node);
 
 	// Create the mapped list
 	mapped_lst = ft_lstmap(orig_lst, ft_map_content_toupper);
 	// Print it
 	puts("Mapped list:");
-	ft_lstiter(mapped_lst, ft_print_lst_nodes);
+	ft_lstiter(mapped_lst, ft_print_node);
 
 	// Print the original again (to check it's ok)
 	puts("Original list again:");
-	ft_lstiter(orig_lst, ft_print_lst_nodes);
+	ft_lstiter(orig_lst, ft_print_node);
 
 	// delete the lists
 	ft_lstdel(&orig_lst, ft_del_node_content);
