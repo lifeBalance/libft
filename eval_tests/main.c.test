@@ -1218,7 +1218,27 @@ int	main(void)
 
 #ifdef FT_PUTNBR_FD
 	printf("* * * ft_putnbr_fd * * *\n");
-	ft_putnbr_fd(234, 1);
+
+	puts("TEST #1: Single-digit numbers");
+	ft_putstr("3 == ");
+	ft_putnbr_fd(3, 1);
+
+	puts("\n\nTEST #2: Double-digit numbers");
+	ft_putstr("10 == ");
+	ft_putnbr_fd(10, 2);
+
+	puts("\n\nTEST #3: Zero");
+	ft_putstr("0 == ");
+	ft_putnbr_fd(0, 1);
+
+	puts("\n\nTEST #4: Minimum value within 'int' range.");
+	ft_putstr("-2147483648 == ");
+	ft_putnbr_fd(-2147483648, 1);
+
+	puts("\n\nTEST #5: Maximum value within 'int' range.");
+	ft_putstr("2147483647 == ");
+	ft_putnbr_fd(2147483647, 2);
+	ft_putendl("");
 #endif
 
 /* * * * * * * * * * * * * * * * * * * * * *
