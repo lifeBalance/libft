@@ -395,11 +395,12 @@ int	main(void)
 	strcpy(s1, "12345");
 	strcpy(s2, "12345");
 
-	p = ft_strcat(s2, "ABCDEXXX");
-	printf("ft_: '%s' ret: '%s'\n", s2, p);
+	// String 's1' must have sufficient space to hold the result (Undefined)
+	//p = ft_strcat(s2, "ABCDEXXX");
+	//printf("ft_: '%s' ret: '%s'\n", s2, p);
 
-	p = strcat(s1, "ABCDEXXX");
-	printf("std: '%s' ret: '%s'\n", s1, p);
+	//p = strcat(s1, "ABCDEXXX");
+	//printf("std: '%s' ret: '%s'\n", s1, p);
 #endif
 
 #ifdef FT_STRNCAT
@@ -411,38 +412,35 @@ int	main(void)
 
 	printf("TEST #1: Original dest.: '%s|%s|'\n", d1, d1 + 6);
 	p = strncat(d1, "abcde", 2); // len of src ("abcde") is greater than n.
-	printf("std: '%s' ret: '%s'(%ld) null-ended? %d\n\n",
+	printf("std: '%s' ret: '%s'(%ld) null-ended? %d\n",
 	d1, p, strlen(p), p[strlen(d1)] == '\0');
 
-	printf("TEST #1: Original dest.: '%s|%s|'\n", d2, d2 + 6);
 	p = ft_strncat(d2, "abcde", 2); // len of src ("abcde") is greater than n.
-	printf("ft_: '%s' ret: '%s'(%ld) null-ended? %d\n\n",
+	printf("ft_: '%s' ret: '%s'(%ld) null-ended? %d\n",
 	d2, p, strlen(p), p[strlen(d2)] == '\0');
 
 	// Restore strings to original form (use memcpy, bc of embedded nulls).
 	memcpy(d1, "01234\0****\0", 11);
 	memcpy(d2, "01234\0****\0", 11);
 
-	printf("TEST #2: Original dest.: '%s|%s|'\n", d1, d1 + 6);
+	printf("\nTEST #2: Original dest.: '%s|%s|'\n", d1, d1 + 6);
 	p = strncat(d1, "x", 3);		/* len of src is smaller than n */
-	printf("std: '%s' ret: '%s'(%ld) null-ended? %d\n\n",
+	printf("std: '%s' ret: '%s'(%ld) null-ended? %d\n",
 	d1, p, strlen(p), p[strlen(d1)] == '\0');
 
-	printf("TEST #2: Original dest.: '%s|%s|'\n", d2, d2 + 6);
 	p = ft_strncat(d2, "x", 3);		/* len of src is smaller than n */
-	printf("ft_: '%s' ret: '%s'(%ld) null-ended? %d\n\n",
+	printf("ft_: '%s' ret: '%s'(%ld) null-ended? %d\n",
 	d2, p, strlen(p), p[strlen(d2)] == '\0');
 
 	// Restore strings to original form (use memcpy, bc of embedded nulls).
 	memcpy(d1, "01234\0****\0", 11);
 	memcpy(d2, "01234\0****\0", 11);
 
-	printf("TEST #3: Original dest.: '%s|%s|'\n", d1, d1 + 6);
+	printf("\nTEST #3: Original dest.: '%s|%s|'\n", d1, d1 + 6);
 	p = strncat(d1, "o_O", 3);		/* len of src is equal than n */
-	printf("std: '%s' ret: '%s'(%ld) null-ended? %d\n\n",
+	printf("std: '%s' ret: '%s'(%ld) null-ended? %d\n",
 	d1, p, strlen(p), p[strlen(d1)] == '\0');
 
-	printf("TEST #3: Original dest.: '%s|%s|'\n", d2, d2 + 6);
 	p = ft_strncat(d2, "o_O", 3);		/* len of src is equal than n */
 	printf("ft_: '%s' ret: '%s'(%ld) null-ended? %d\n",
 	d2, p, strlen(p), p[strlen(d2)] == '\0');
