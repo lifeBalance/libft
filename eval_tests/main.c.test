@@ -1113,29 +1113,57 @@ int	main(void)
 
 #ifdef FT_PUTENDL
 	printf("* * * ft_putendl * * *\n");
-	char *s1 = NULL;
-	char *s2; /* wild pointer: undefined behaviour */
+	char s1[] = "I'm a proper string 😀";
+	char *s2 = "I'm stored at READ-ONLY memory (don't try to change me)";
 
-	ft_putendl("'hello world'");
+	puts("TEST #1: Print an ordinary string");
 	ft_putendl(s1);
+
+	puts("\nTEST #2: Print a string literal");
+	ft_putendl("hello world");
+
+	puts("\nTEST #3: Print a pointer to string literal");
 	ft_putendl(s2);
+
+	puts("\nTEST #4: Try to print an empty string");
+	ft_putendl("");
+
+	puts("\nTEST #5: Try to print NULL");
+	ft_putendl(NULL);
 #endif
 
 #ifdef FT_PUTNBR
 	printf("* * * ft_putnbr * * *\n");
 
+	puts("TEST #1: Single-digit numbers");
+	ft_putstr("3 == ");
 	ft_putnbr(3);
-	ft_putchar('\n');
-	ft_putnbr(234);
-	ft_putchar('\n');
-	ft_putnbr(-2147483648);
-	ft_putchar('\n');
-	ft_putnbr(2147483647);
-	ft_putchar('\n');
-	ft_putnbr(10001);
-	ft_putchar('\n');
+
+	puts("\n\nTEST #2: Double-digit numbers");
+	ft_putstr("10 == ");
+	ft_putnbr(10);
+
+	puts("\n\nTEST #3: Zero");
+	ft_putstr("0 == ");
 	ft_putnbr(0);
-	ft_putchar('\n');
+
+	puts("\n\nTEST #4: Minimum value within 'int' range.");
+	ft_putstr("-2147483648 == ");
+	ft_putnbr(-2147483648);
+
+	puts("\n\nTEST #5: Maximum value within 'int' range.");
+	ft_putstr("2147483647 == ");
+	ft_putnbr(2147483647);
+	ft_putendl("");
+/*	
+	puts("\nTEST #6: Value over maximum 'int' range.");
+	printf("ft_: (2147483648): ");
+	ft_putnbr(2147483648);
+
+	puts("\nTEST #7: Value below minimum 'int' range.");
+	printf("ft_: (-2147483649): ");
+	ft_putnbr(-2147483649);
+*/
 #endif
 
 #ifdef FT_PUTCHAR_FD
