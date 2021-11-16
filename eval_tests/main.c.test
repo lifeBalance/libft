@@ -1176,12 +1176,23 @@ int	main(void)
 
 #ifdef FT_PUTSTR_FD
 	printf("* * * ft_putstr_fd * * *\n");
-	char *s = "No need for NULL tests!";
+	char s1[] = "I'm a proper string 😀\n";
+	char *s2 = "I'm stored at READ-ONLY memory (don't try to change me)\n";
 
-	ft_putstr_fd("'hello world' to stderr\n", 2);
-	ft_putstr_fd(s, 1);
-	ft_putstr_fd("\n", 1);
-	// ft_putstr(NULL);
+	puts("TEST #1: Print an ordinary string");
+	ft_putstr_fd(s1, 1);
+
+	puts("\nTEST #2: Print a string literal");
+	ft_putstr_fd("hello world\n", 2);
+
+	puts("\nTEST #3: Print a pointer to string literal");
+	ft_putstr_fd(s2, 1);
+
+	puts("\nTEST #4: Print an empty string");
+	ft_putstr_fd("", 1);
+
+	puts("\nTEST #5: Try to print NULL");
+	ft_putstr_fd(NULL, 1);
 #endif
 
 #ifdef FT_PUTENDL_FD
