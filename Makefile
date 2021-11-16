@@ -6,7 +6,7 @@
 #    By: rodrodri <rodrodri@student.hive.fi >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 11:09:58 by rodrodri          #+#    #+#              #
-#    Updated: 2021/11/16 11:52:24 by rodrodri         ###   ########.fr        #
+#    Updated: 2021/11/16 16:55:11 by rodrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,14 +99,20 @@ fclean:	clean
 
 re:	fclean all
 
-# To please Moulinette (who forbids extraneous '*.c' files), './main.c' is
-# a (gitignored) symlink to './eval_tests/main.c.test'. Rule use example:
-#
-# 	$ make test f=FT_PUTCHAR
-test:	main.c $(HDRS) $(SRCS) .FORCE
+test:	.FORCE
 
 # The following target is to 'force' building test,
 # even if main.c hasn't changed.
 .FORCE:
 	@gcc $(FLAGS) -L. -lft main.c -D$(fn) -o test
 	@./test
+
+# To please Moulinette (who forbids extraneous '*.c' files), './main.c' is
+# a (gitignored) symlink to './eval_tests/main.c.test'. In order to start
+# testing, create a symlink (in the current directory) named 'main.c',
+# pointing to ./eval_tests/main.c.test:
+#
+#	$ ln -s ./eval_tests/main.c.test main.c
+#
+# Rule use example:
+# 	$ make test f=FT_PUTCHAR
