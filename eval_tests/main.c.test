@@ -885,33 +885,41 @@ int	main(void)
 	printf("* * * ft_striter * * *\n");
 	char s[] = "abcdef";
 
+	puts("TEST #1: String to uppercase.");
+	printf("Original: '%s'\n", s);
 	ft_striter(s, to_up);
-	printf("%s\n", s);
+	printf("Result: '%s'\n", s);
 #endif
 
 #ifdef FT_STRITERI
 	printf("* * * ft_striteri * * *\n");
 	char s[] = "abcdef";
 
+	puts("TEST #1: String to alternating caps.");
+	printf("Original: '%s'\n", s);
 	ft_striteri(s, to_up_idx);
-	printf("%s\n", s);
+	printf("Result: '%s'\n", s);
 #endif
 
 #ifdef FT_STRMAP
 	printf("* * * ft_strmap * * *\n");
-	char *s;
+	char *s = NULL;
 
+	puts("TEST #1: String to uppercase.");
+	printf("Original: '%s'\n", "hello, world");
 	s = ft_strmap("hello, world", to_up);
-	printf("'%s'\n", s);
+	printf("Mapped: '%s'\n", s);
 	ft_strdel(&s);
 #endif
 
 #ifdef FT_STRMAPI
 	printf("* * * ft_strmapi * * *\n");
-	char *s;
+	char *s = NULL;
 
+	puts("TEST #1: String to alternating caps.");
+	printf("Original: '%s'\n", "hello, world");
 	s = ft_strmapi("hello, world", to_up_idx);
-	printf("'%s'\n", s);
+	printf("Mapped: '%s'\n", s);
 	ft_strdel(&s);
 #endif
 
