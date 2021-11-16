@@ -793,7 +793,7 @@ int	main(void)
 	printf("isalpha(' ')? %s\n", ft_isalpha(' ') ? "true" : "false");
 #endif
 
-#ifdef ISDIGIT
+#ifdef FT_ISDIGIT
 	printf("* * * ft_isdigit * * *\n");
 	printf("isdigit('3')? %s\n", ft_isdigit('3') ? "true" : "false");
 	printf("isdigit('a')? %s\n", ft_isdigit('a') ? "true" : "false");
@@ -801,7 +801,7 @@ int	main(void)
 	printf("isdigit(' ')? %s\n", ft_isdigit(' ') ? "true" : "false");
 #endif
 
-#ifdef ISALNUM
+#ifdef FT_ISALNUM
 	printf("* * * ft_isalnum * * *\n");
 	printf("isalnum('3')? %s\n", ft_isalnum('3') ? "true" : "false");
 	printf("isalnum('a')? %s\n", ft_isalnum('a') ? "true" : "false");
@@ -809,28 +809,28 @@ int	main(void)
 	printf("isalnum(' ')? %s\n", ft_isalnum(' ') ? "true" : "false");
 #endif
 
-#ifdef ISASCII
+#ifdef FT_ISASCII
 	int ch;
 	printf("* * * ft_isascii * * *\n");
 	for (ch = -3; ch <= 127; ch++)
 		printf("isascii('%c')? %s\n", ch, ft_isascii(ch) ? "true" : "false");
 #endif
 
-#ifdef ISPRINT
+#ifdef FT_ISPRINT
 	int ch;
 	printf("* * * ft_isprint * * *\n");
 	for (ch = 0; ch <= 127; ch++)
 		printf("isprint('%c')? %s\n", ch, ft_isprint(ch) ? "true" : "false");
 #endif
 
-#ifdef TOUPPER
+#ifdef FT_TOUPPER
 	int ch;
 	printf("* * * ft_toupper * * *\n");
 	for (ch = '`'; ch <= 'z'; ch++)
 		printf("toupper('%c'): %c\n", ch, ft_toupper(ch));
 #endif
 
-#ifdef TOLOWER
+#ifdef FT_TOLOWER
 	int ch;
 	printf("* * * ft_tolower * * *\n");
 	for (ch = '@'; ch <= 'Z'; ch++)
