@@ -972,6 +972,7 @@ int	main(void)
 	printf("* * * ft_strsub * * *\n");
 	char *join;
 
+	puts("TEST #1: Joing 'hello' and ' world'.");
 	join = ft_strjoin("hello", " world");
 	printf("'%s' (len: %ld)\n", join, ft_strlen(join));
 	ft_strdel(&join);
@@ -1017,16 +1018,22 @@ int	main(void)
 #ifdef FT_STRSPLIT
 	printf("* * * ft_strsplit * * *\n");
 	
+	puts("TEST #1: '**hello*world'");
 	ft_print_arr_str(ft_strsplit("**hello*world", '*'));
-	ft_putchar('\n');
+
+	puts("\nTEST #2: '*hello*fellow***students*'");
 	ft_print_arr_str(ft_strsplit("*hello*fellow***students*", '*'));
-	ft_putchar('\n');
+
+	puts("\nTEST #3: '**fak da police*'");
 	ft_print_arr_str(ft_strsplit("**fak da police*", '*'));
-	ft_putchar('\n');
+
+	puts("\nTEST #4: 'hello world*'");
 	ft_print_arr_str(ft_strsplit("hello world*", '*'));
-	ft_putchar('\n');
+
+	puts("\nTEST #5: '*last one'");
 	ft_print_arr_str(ft_strsplit("*last one", '*'));
-	ft_putchar('\n');
+
+	puts("\nTEST #6: 'no, for real...'");
 	ft_print_arr_str(ft_strsplit("no, for real...", '*'));
 #endif
 
