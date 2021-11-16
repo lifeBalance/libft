@@ -1197,10 +1197,23 @@ int	main(void)
 
 #ifdef FT_PUTENDL_FD
 	printf("* * * ft_putendl_fd * * *\n");
-	// According to the C standard, dereferencing NULL is undefined.
+	char s1[] = "I'm a proper string 😀";
+	char *s2 = "I'm stored at READ-ONLY memory (don't try to change me)";
 
-	ft_putendl("'hello world'");
-	ft_putendl("");
+	puts("TEST #1: Print an ordinary string");
+	ft_putendl_fd(s1, 1);
+
+	puts("\nTEST #2: Print a string literal");
+	ft_putendl_fd("hello world", 2);
+
+	puts("\nTEST #3: Print a pointer to string literal");
+	ft_putendl_fd(s2, 1);
+
+	puts("\nTEST #4: Print an empty string");
+	ft_putendl_fd("", 1);
+
+	puts("\nTEST #5: Try to print NULL");
+	ft_putendl_fd(NULL, 1);
 #endif
 
 #ifdef FT_PUTNBR_FD
