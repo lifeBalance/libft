@@ -728,6 +728,9 @@ int	main(void)
 	ret = ft_strncmp("a", "a", 2);
 	printf("ft_: '%s' to '%s' (%d): %d\n", "a", "a", 2, ret);
 
+	/* Getting different numbers with string literals is expected.
+	* What matters is the SIGN: 'an integer greater than, equal to,
+	* or less than 0'. */
 	puts("\nTEST #4: comparing one-character different strings.");
 	ret = strncmp("a", "q", 2);
 	printf("std: '%s' to '%s' (%d): %d\n", "a", "q", 2, ret);
