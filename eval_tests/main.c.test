@@ -738,14 +738,6 @@ int	main(void)
 	printf("ft_: '%s' to '%s' (%d): %d\n", "a", "q", 2, ret);
 #endif
 
-#ifdef ISALPHA
-	printf("* * * ft_isalpha * * *\n");
-	printf("isalpha('C')? %s\n", ft_isalpha('C') ? "true" : "false");
-	printf("isalpha('2')? %s\n", ft_isalpha('2') ? "true" : "false");
-	printf("isalpha('*')? %s\n", ft_isalpha('*') ? "true" : "false");
-	printf("isalpha(' ')? %s\n", ft_isalpha(' ') ? "true" : "false");
-#endif
-
 #ifdef FT_ATOI
 	printf("* * * ft_atoi * * *\n");
 	puts("TEST #1: Single-digit numbers");
@@ -776,6 +768,10 @@ int	main(void)
 	printf("std: (-2147483649): %d\n", atoi("-2147483649"));
 	printf("ft_: (-2147483649): %d\n", ft_atoi("-2147483649"));
 
+	/* Expected inconsistent 'wrong results' because in some platforms, 
+	* 'atoi' is implemented as a call to 'strtol' (which returns a long) whose
+	* 'long' return value is casted to 'int'. Hence we get '0' or '-1' in
+	* case of underflow/overflow of long arguments. */
 	puts("\nTEST #8: Value over maximum 'long' range.");
 	printf("std: (99999999999999999999999999): %d\n",
 		atoi("99999999999999999999999999"));
@@ -787,6 +783,14 @@ int	main(void)
 		atoi("-99999999999999999999999999"));
 	printf("ft_: (-99999999999999999999999999): %d\n",
 		ft_atoi("-99999999999999999999999999"));
+#endif
+
+#ifdef FT_ISALPHA
+	printf("* * * ft_isalpha * * *\n");
+	printf("isalpha('C')? %s\n", ft_isalpha('C') ? "true" : "false");
+	printf("isalpha('2')? %s\n", ft_isalpha('2') ? "true" : "false");
+	printf("isalpha('*')? %s\n", ft_isalpha('*') ? "true" : "false");
+	printf("isalpha(' ')? %s\n", ft_isalpha(' ') ? "true" : "false");
 #endif
 
 #ifdef ISDIGIT
